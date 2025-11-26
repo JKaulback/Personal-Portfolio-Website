@@ -7,53 +7,48 @@ interface ResumeProps {
 export function Resume({ isDarkMode }: ResumeProps) {
   const experience = [
     {
-      role: 'Senior Full Stack Developer',
-      company: 'Tech Innovations Inc.',
-      location: 'San Francisco, CA',
-      period: '2021 - Present',
+      role: 'Junior IT Analyst',
+      company: 'J.D. Irving IT Department',
+      location: 'Saint John, NB',
+      period: 'Jan \'19 - Apr \'19',
       highlights: [
-        'Led development of microservices architecture serving 2M+ users',
-        'Mentored team of 5 junior developers',
-        'Reduced page load time by 60% through optimization',
+        'Automated configuration and functional testing processes, improving team efficiency.',
+        'Authored training documentation used for both technical and non-technical co-workers.',
+        'Identified and communicated bugs, contributing to faster issue resolution.',
+        'Collaborated with team members to effectively clarify requirements and constraints.'
       ],
     },
     {
-      role: 'Full Stack Developer',
-      company: 'Digital Solutions Co.',
-      location: 'Remote',
-      period: '2019 - 2021',
+      role: 'Carpenter/Draftsman',
+      company: 'Sycamore Tiny Homes',
+      location: 'Baker Settlement, NS',
+      period: 'Aug \'23 - Sept \'25',
       highlights: [
-        'Built and maintained 15+ client web applications',
-        'Implemented CI/CD pipelines reducing deployment time by 40%',
-        'Collaborated with design team on UX improvements',
+        'Collaborated with team members and worked independently on custom residential projects.',
+        'Designed detailed 3D models and 2D construction documentation using SketchUp.',
+        'Adapted designs to requirement changes and feedback from clients and team reviews.',
+        'Maintained consistent punctuality and reliability on job sites.'
       ],
-    },
-    {
-      role: 'Junior Developer',
-      company: 'StartUp Labs',
-      location: 'San Francisco, CA',
-      period: '2018 - 2019',
-      highlights: [
-        'Developed responsive frontend components using React',
-        'Participated in agile development sprints',
-        'Contributed to open-source company projects',
-      ],
-    },
+    }
   ];
 
   const education = [
     {
-      degree: 'Bachelor of Science in Computer Science',
-      school: 'University of California',
-      period: '2014 - 2018',
-      honors: 'Magna Cum Laude',
+      degree: 'IT Programming Diploma',
+      school: 'Nova Scotia Community College',
+      period: 'Sept \'24 - Present'
+    },
+    {
+      degree: 'Bachelor of Science in Software Engineering',
+      school: 'University of New Brunswick',
+      period: 'Sept \'18 - Feb \'20 (Incomplete)',
     },
   ];
 
   const certifications = [
-    'AWS Certified Solutions Architect',
-    'Google Cloud Professional Developer',
-    'Meta React Certification',
+    'First Place Winner of 2025 RBC HubHacks',
+    'Occupational Health & Safety Act',
+    'Workplace Hazardous Materials Information Systems'
   ];
 
   return (
@@ -81,7 +76,7 @@ export function Resume({ isDarkMode }: ResumeProps) {
           <p className={`transition-colors duration-300 ${
             isDarkMode ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            My journey in software development
+            My professional journey
           </p>
         </div>
 
@@ -176,13 +171,6 @@ export function Resume({ isDarkMode }: ResumeProps) {
                   }`}>
                     {edu.period}
                   </p>
-                  <span className={`inline-block mt-2 px-2 py-1 rounded text-xs border ${
-                    isDarkMode 
-                      ? 'bg-yellow-900/30 text-yellow-300 border-yellow-800' 
-                      : 'bg-yellow-100 text-yellow-700 border-yellow-300'
-                  }`}>
-                    {edu.honors}
-                  </span>
                 </div>
               ))}
             </div>
@@ -195,7 +183,7 @@ export function Resume({ isDarkMode }: ResumeProps) {
                 isDarkMode ? 'text-white border-slate-700' : 'text-slate-900 border-slate-300'
               }`}>
                 <Award className="w-5 h-5" />
-                Certifications
+                Certifications & Awards
               </h3>
               
               <div className="space-y-2">
