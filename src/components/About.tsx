@@ -22,16 +22,10 @@ export function About({ isDarkMode }: AboutProps) {
             About Me Module
           </div>
           
-          <h1 className={`mb-4 transition-colors duration-300 ${
-            isDarkMode ? 'text-white' : 'text-slate-900'
-          }`}>
-            Building Digital Solutions
-          </h1>
-          
           <h2 className={`mb-6 transition-colors duration-300 ${
             isDarkMode ? 'text-slate-300' : 'text-slate-600'
           }`}>
-            Full Stack Developer & Designer
+            Junior Developer & Designer
           </h2>
           
           {/* Content Modules */}
@@ -44,9 +38,9 @@ export function About({ isDarkMode }: AboutProps) {
               <p className={`leading-relaxed transition-colors duration-300 ${
                 isDarkMode ? 'text-slate-400' : 'text-slate-700'
               }`}>
-                I'm a passionate developer with a love for creating beautiful, functional web experiences. 
-                With over 5 years of experience in the industry, I specialize in building modern web applications 
-                that are both visually appealing and highly performant.
+                I'm a passionate developer with a love for creating well-structured, functional solutions.
+                I have been learning how to use different tools, technologies, and techniques to
+                be successful in any sector of the IT industry.
               </p>
             </div>
             
@@ -58,8 +52,8 @@ export function About({ isDarkMode }: AboutProps) {
               <p className={`leading-relaxed transition-colors duration-300 ${
                 isDarkMode ? 'text-slate-400' : 'text-slate-700'
               }`}>
-                When I'm not coding, you can find me exploring new technologies, contributing to open-source 
-                projects, or enjoying a good cup of coffee while sketching out new design ideas.
+                When I'm not coding, you can find me invested in a book, spending time in nature,
+                or going on mini-adventures with my wife.
               </p>
             </div>
           </div>
