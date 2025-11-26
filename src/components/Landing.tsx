@@ -54,25 +54,17 @@ export function Landing({ isDarkMode }: LandingProps) {
 
         {/* Main Heading - Modular Block */}
         <div className="space-y-4">
-          <div className={`inline-block px-4 py-2 rounded-lg text-sm border-2 transition-colors duration-300 ${
-            isDarkMode 
-              ? 'bg-slate-900 text-purple-300 border-purple-800' 
-              : 'bg-purple-50 text-purple-700 border-purple-300 shadow-sm'
-          }`}>
-            <span className="inline-block mr-2">👋</span>
-            <span>Welcome to my portfolio</span>
-          </div>
           
           <h1 className={`transition-colors duration-300 ${
             isDarkMode ? 'text-white' : 'text-slate-900'
           }`}>
-            Hi, I'm Alex Morgan
+            Hi, I'm Justin Kaulback
           </h1>
           
           <p className={`text-xl md:text-2xl max-w-2xl mx-auto transition-colors duration-300 ${
             isDarkMode ? 'text-slate-300' : 'text-slate-700'
           }`}>
-            Full Stack Developer crafting beautiful digital experiences with modern web technologies
+            Junior Developer creating scalable, well organized solutions with modern technologies
           </p>
         </div>
 
@@ -113,8 +105,8 @@ export function Landing({ isDarkMode }: LandingProps) {
         {/* Social Links - Modular Blocks */}
         <div className="flex gap-4 justify-center pt-8">
           {[
-            { icon: Github, label: 'GitHub', href: '#' },
-            { icon: Linkedin, label: 'LinkedIn', href: '#' },
+            { icon: Github, label: 'GitHub', href: 'https://github.com/JKaulback' },
+            { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/justin-kaulback-832b8314b/' },
             { icon: Mail, label: 'Email', href: '#contact' },
           ].map(({ icon: Icon, label, href }) => (
             <a
