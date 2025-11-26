@@ -10,19 +10,19 @@ export function Skills({ isDarkMode }: SkillsProps) {
       title: 'Frontend Development',
       icon: Code2,
       color: 'green',
-      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Vue.js', 'HTML/CSS'],
+      skills: ['React', 'HTML/CSS', 'Tailwind CSS', 'SASS', 'Larvel'],
     },
     {
       title: 'Backend Development',
       icon: Server,
       color: 'blue',
-      skills: ['Node.js', 'Express', 'Python', 'REST APIs', 'GraphQL', 'MongoDB'],
+      skills: ['Node.js', 'Express', 'Python', 'REST/SOAP APIs', 'phpMyAdmin', 'OkHttp'],
     },
     {
       title: 'Database & Storage',
       icon: Database,
       color: 'purple',
-      skills: ['PostgreSQL', 'MySQL', 'Redis', 'Firebase', 'Supabase', 'Prisma'],
+      skills: ['PostgreSQL', 'MySQL', 'Firebase', 'MongoDB'],
     },
     {
       title: 'Design & UI/UX',
@@ -34,13 +34,13 @@ export function Skills({ isDarkMode }: SkillsProps) {
       title: 'Mobile Development',
       icon: Smartphone,
       color: 'orange',
-      skills: ['React Native', 'Progressive Web Apps', 'Mobile-First Design'],
+      skills: ['React Native', 'Android Studio', 'Progressive Web Apps', 'Mobile-First Design'],
     },
     {
       title: 'DevOps & Tools',
       icon: Workflow,
       color: 'cyan',
-      skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Linux', 'Vercel'],
+      skills: ['Git', 'GitHub', 'Docker', 'CI/CD', 'Linux', 'Vercel'],
     },
   ];
 
