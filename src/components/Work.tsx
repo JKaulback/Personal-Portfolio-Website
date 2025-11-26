@@ -31,9 +31,7 @@ export function Work({ isDarkMode }: WorkProps) {
   ];
 
   return (
-    <section id="work" className={`min-h-screen flex items-center justify-center p-8 transition-colors duration-300 ${
-      isDarkMode ? 'bg-slate-950' : 'bg-slate-50'
-    }`}>
+    <section id="work" className="min-h-screen flex items-center justify-center p-8 transition-colors duration-300">
       <div className="max-w-6xl w-full">
         {/* Section Header Module */}
         <div className={`mb-12 p-6 rounded-2xl border-2 transition-colors duration-300 ${

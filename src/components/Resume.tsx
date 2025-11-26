@@ -57,9 +57,7 @@ export function Resume({ isDarkMode }: ResumeProps) {
   ];
 
   return (
-    <section id="resume" className={`min-h-screen flex items-center justify-center p-8 transition-colors duration-300 ${
-      isDarkMode ? 'bg-slate-950' : 'bg-slate-50'
-    }`}>
+    <section id="resume" className="min-h-screen flex items-center justify-center p-8 transition-colors duration-300">
       <div className="max-w-5xl w-full">
         {/* Section Header Module */}
         <div className={`mb-12 p-6 rounded-2xl border-2 transition-colors duration-300 ${

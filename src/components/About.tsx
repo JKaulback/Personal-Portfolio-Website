@@ -4,9 +4,7 @@ interface AboutProps {
 
 export function About({ isDarkMode }: AboutProps) {
   return (
-    <section id="about" className={`min-h-screen flex items-center justify-center p-8 pt-24 lg:pt-8 transition-colors duration-300 ${
-      isDarkMode ? 'bg-slate-950' : 'bg-slate-50'
-    }`}>
+    <section id="about" className="min-h-screen flex items-center justify-center p-8 pt-24 lg:pt-8 transition-colors duration-300">
       <div className="max-w-3xl">
         {/* Modular Container */}
         <div className={`p-8 md:p-12 rounded-2xl border-2 transition-colors duration-300 ${

@@ -12,6 +12,20 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  const getSectionBackground = (section: string, isDark: boolean) => {
+    const backgrounds: { [key: string]: { light: string; dark: string } } = {
+      home: { light: '#faf5ff', dark: '#3b0764' },
+      about: { light: '#fff7ed', dark: '#7c2d12' },
+      skills: { light: '#ecfdf5', dark: '#064e3b' },
+      work: { light: '#f0f9ff', dark: '#082f49' },
+      resume: { light: '#fefce8', dark: '#713f12' },
+      extra: { light: '#fdf2f8', dark: '#831843' },
+      contact: { light: '#eff6ff', dark: '#172554' },
+    };
+    const bg = backgrounds[section] || backgrounds.home;
+    return isDark ? bg.dark : bg.light;
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'work', 'resume', 'extra', 'contact'];
@@ -33,15 +47,19 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const bgColor = getSectionBackground(activeSection, isDarkMode);
+
   return (
-    <div className={`flex min-h-screen transition-colors duration-300 ${
-      isDarkMode 
-        ? 'bg-slate-950' 
-        : 'bg-slate-100'
-    }`}>
+    <div 
+      className="flex min-h-screen transition-colors duration-500"
+      style={{ backgroundColor: bgColor }}
+    >
       <LeftNav activeSection={activeSection} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       
-      <main className="flex-1 ml-0 lg:ml-24">
+      <main 
+        className="flex-1 ml-0 lg:ml-48 transition-colors duration-300"
+        style={{ backgroundColor: bgColor }}
+      >
         <Landing isDarkMode={isDarkMode} />
         <About isDarkMode={isDarkMode} />
         <Skills isDarkMode={isDarkMode} />

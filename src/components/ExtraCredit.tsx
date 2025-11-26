@@ -53,9 +53,7 @@ export function ExtraCredit({ isDarkMode }: ExtraCreditProps) {
   ];
 
   return (
-    <section id="extra" className={`min-h-screen flex items-center justify-center p-8 transition-colors duration-300 ${
-      isDarkMode ? 'bg-slate-950' : 'bg-slate-50'
-    }`}>
+    <section id="extra" className="min-h-screen flex items-center justify-center p-8 transition-colors duration-300">
       <div className="max-w-6xl w-full">
         {/* Section Header Module */}
         <div className={`mb-12 p-6 rounded-2xl border-2 transition-colors duration-300 ${
@@ -65,7 +63,7 @@ export function ExtraCredit({ isDarkMode }: ExtraCreditProps) {
         }`}>
           <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border transition-colors duration-300 ${
             isDarkMode 
-              ? 'bg-pink-900/30 text-pink-300 border-pink-800' 
+              ? 'bg-pink-900/30 text-pink-300 border-pink-800 shadow-pink-500/20' 
               : 'bg-pink-100 text-pink-700 border-pink-300'
           }`}>
             <div className="w-2 h-2 bg-pink-500 rounded-full" />
