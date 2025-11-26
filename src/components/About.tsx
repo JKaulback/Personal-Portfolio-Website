@@ -25,7 +25,7 @@ export function About({ isDarkMode }: AboutProps) {
           <h2 className={`mb-6 transition-colors duration-300 ${
             isDarkMode ? 'text-slate-300' : 'text-slate-600'
           }`}>
-            Junior Developer & Designer
+            Junior Developer, Lifelong Problem Solver
           </h2>
           
           {/* Content Modules */}
