@@ -17,7 +17,6 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
     { id: 'skills', label: 'Skills', icon: Sparkles, color: 'mint' },
     { id: 'work', label: 'Work', icon: Briefcase, color: 'sky' },
     { id: 'resume', label: 'Resume', icon: FileText, color: 'cream' },
-    { id: 'extra', label: 'Extra Credit', icon: Star, color: 'rose' },
     { id: 'contact', label: 'Contact Me', icon: Mail, color: 'periwinkle' },
   ];
 
@@ -87,13 +86,6 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
         darkActive: 'text-yellow-200 border-yellow-900',
         darkActiveBg: '#713f12',
       },
-      rose: {
-        light: 'bg-pink-200 text-pink-900 border-pink-400',
-        lightActive: 'bg-pink-50 text-pink-700 border-pink-200',
-        dark: 'bg-pink-900/30 text-pink-300 border-pink-800',
-        darkActive: 'text-pink-200 border-pink-900',
-        darkActiveBg: '#831843',
-      },
       periwinkle: {
         light: 'bg-blue-200 text-blue-900 border-blue-400',
         lightActive: 'bg-blue-50 text-blue-700 border-blue-200',
@@ -119,7 +111,6 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
       mint: '#064e3b',
       sky: '#082f49',
       cream: '#713f12',
-      rose: '#831843',
       periwinkle: '#172554',
     };
     

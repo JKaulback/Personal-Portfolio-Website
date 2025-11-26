@@ -5,7 +5,6 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Work } from './components/Work';
 import { Resume } from './components/Resume';
-import { ExtraCredit } from './components/ExtraCredit';
 import { Contact } from './components/Contact';
 
 export default function App() {
@@ -65,7 +64,6 @@ export default function App() {
         <Skills isDarkMode={isDarkMode} />
         <Work isDarkMode={isDarkMode} />
         <Resume isDarkMode={isDarkMode} />
-        <ExtraCredit isDarkMode={isDarkMode} />
         <Contact isDarkMode={isDarkMode} />
       </main>
     </div>
