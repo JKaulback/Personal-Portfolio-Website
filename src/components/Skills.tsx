@@ -1,4 +1,4 @@
-import { Code2, Database, Palette, Server, Smartphone, Workflow } from 'lucide-react';
+import { Code2, Database, Puzzle, Server, Smartphone, Workflow } from 'lucide-react';
 
 interface SkillsProps {
   isDarkMode: boolean;
@@ -25,10 +25,12 @@ export function Skills({ isDarkMode }: SkillsProps) {
       skills: ['PostgreSQL', 'MySQL', 'Firebase', 'MongoDB'],
     },
     {
-      title: 'Design & UI/UX',
-      icon: Palette,
+      title: 'Soft Skills',
+      icon: Puzzle,
       color: 'pink',
-      skills: ['Figma', 'Adobe XD', 'Responsive Design', 'Prototyping', 'User Testing'],
+      skills: ['Problem Solving', 'Communication', 'Time Management', 'Prioritization',
+        'Attention to Detail', 'Organization'
+      ],
     },
     {
       title: 'Mobile Development',
