@@ -8,11 +8,11 @@ interface ProjectsProps {
 export function Projects({ isDarkMode }: ProjectsProps) {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured online shopping platform with real-time inventory management, payment processing, and customer analytics.',
-      tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80',
-      module: 'Frontend',
+      title: 'Chess Analysis Program',
+      description: 'A comprehensive chess analysis platform in C++ featuring a fully-functional chess game, UCI chess engine integration and undo/redo system',
+      tags: ['C++', 'MVC Architecture', 'Windows Process Handling', 'Custom UI'],
+      image: '../assets/chess_game_in_progress.jpg',
+      module: 'Game Design',
     },
     {
       title: 'Task Management App',
