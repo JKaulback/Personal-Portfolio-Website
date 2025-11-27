@@ -1,5 +1,6 @@
 import { Mail, MapPin, Linkedin, Github, Twitter } from 'lucide-react';
 import { useState } from 'react';
+import { sendEmail } from '../services/email_service';
 
 interface ContactProps {
   isDarkMode: boolean;
@@ -14,9 +15,17 @@ export function Contact({ isDarkMode }: ContactProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+    
+    sendEmail(formData).then(() => {
+      alert('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    })
+    .catch((err) => {
+      console.error('FAILED...', err);
+      alert('Failed to send message. Please try again.');
+    });
+
     console.log('Form submitted:', formData);
-    alert('Thanks for reaching out! This is a demo, so the message won\'t actually be sent.');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -93,7 +102,7 @@ export function Contact({ isDarkMode }: ContactProps) {
                     <p className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-slate-300' : 'text-slate-900'
                     }`}>
-                      alex.morgan@example.com
+                      jtkaulback@gmail.com
                     </p>
                   </div>
                 </div>
@@ -119,7 +128,7 @@ export function Contact({ isDarkMode }: ContactProps) {
                     <p className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-slate-300' : 'text-slate-900'
                     }`}>
-                      San Francisco, CA
+                      Bridgewater, NS
                     </p>
                   </div>
                 </div>
@@ -136,12 +145,12 @@ export function Contact({ isDarkMode }: ContactProps) {
               </div>
               <div className="flex gap-3">
                 {[
-                  { icon: Github, label: 'GitHub' },
-                  { icon: Linkedin, label: 'LinkedIn' },
-                  { icon: Twitter, label: 'Twitter' },
-                ].map(({ icon: Icon, label }) => (
-                  <button
+                  { icon: Github, label: 'GitHub', href: 'https://github.com/JKaulback' },
+                  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/justin-kaulback-832b8314b/' },
+                ].map(({ icon: Icon, label, href }) => (
+                  <a
                     key={label}
+                    href={href}
                     className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 border-2 ${
                       isDarkMode 
                         ? 'bg-slate-800 hover:bg-blue-600 text-slate-400 hover:text-white border-slate-700 hover:border-blue-500' 
@@ -150,7 +159,7 @@ export function Contact({ isDarkMode }: ContactProps) {
                     aria-label={label}
                   >
                     <Icon className="w-5 h-5" />
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
