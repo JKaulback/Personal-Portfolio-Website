@@ -60,7 +60,7 @@ export function Contact({ isDarkMode }: ContactProps) {
           <p className={`transition-colors duration-300 ${
             isDarkMode ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Have a project in mind? Let's work together to bring your ideas to life
+            Get in touch with me here. I stay up-to-date with my emails and will get back to you promptly
           </p>
         </div>
 
@@ -241,7 +241,7 @@ export function Contact({ isDarkMode }: ContactProps) {
                     ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500' 
                     : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400'
                 }`}
-                placeholder="Tell me about your project..."
+                placeholder="Enter your message here..."
               />
             </div>
 
