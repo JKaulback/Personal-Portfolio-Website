@@ -1,5 +1,8 @@
 import { ExternalLink, Github } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import chessGameImage from '../assets/chess_game_in_progress.jpg';
+import foodSafeImage from '../assets/food-safe-ns.png';
+import aiTriviaGameImage from '../assets/AI-trivia-game.png';
 
 interface WorkProps {
   isDarkMode: boolean;
@@ -8,25 +11,28 @@ interface WorkProps {
 export function Work({ isDarkMode }: WorkProps) {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured online shopping platform with real-time inventory management, payment processing, and customer analytics.',
-      tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80',
-      module: 'Frontend',
+      title: 'Chess Analysis Program',
+      description: 'A comprehensive chess analysis platform in C++ featuring a fully-functional chess game, UCI chess engine integration and undo/redo system',
+      tags: ['C++', 'MVC Architecture', 'Windows Process Handling', 'Custom UI'],
+      image: chessGameImage,
+      module: 'Game Design',
+      href: 'https://github.com/JKaulback/PROG2100_chess_analysis_program'
     },
     {
-      title: 'Task Management App',
-      description: 'Collaborative task management tool with drag-and-drop interface, real-time updates, and team collaboration features.',
-      tags: ['TypeScript', 'React', 'Firebase', 'Tailwind'],
-      image: 'https://images.unsplash.com/photo-1540350394557-8d14678e7f91?w=800&q=80',
+      title: 'FoodSafe NS',
+      description: 'A web application that helps Nova Scotians find food banks and browse their available inventory with advanced filtering options for allergens and dietary requirements',
+      tags: ['React', 'Node.js', 'Firebase', 'Express Server', 'API Integration'],
+      image: foodSafeImage,
       module: 'Full Stack',
+      href: 'https://github.com/JKaulback/food-safe-ns'
     },
     {
-      title: 'Portfolio Website Builder',
-      description: 'No-code platform that enables creators to build beautiful portfolio websites with customizable templates and themes.',
-      tags: ['Next.js', 'Prisma', 'AWS', 'Vercel'],
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
-      module: 'Backend',
+      title: 'AI Trivia Game',
+      description: 'An interactive web-based trivia game that uses the power of OpenAI\'s GPT to generate unlimited trivia questions.',
+      tags: ['AI', 'API Integration', 'EJS', 'Node.js'],
+      image: aiTriviaGameImage,
+      module: 'API Interactions',
+      href: 'https://github.com/JKaulback/AI_Trivia_Webapp'
     },
   ];
 
@@ -121,18 +127,14 @@ export function Work({ isDarkMode }: WorkProps) {
                 <div className="flex gap-3 pt-2 border-t border-dashed"
                   style={{ borderColor: isDarkMode ? '#334155' : '#e2e8f0' }}
                 >
-                  <button className={`flex items-center gap-2 hover:text-sky-600 transition-colors text-sm ${
+                  <a 
+                    href={project.href}
+                    className={`flex items-center gap-2 hover:text-sky-600 transition-colors text-sm ${
                     isDarkMode ? 'text-slate-400' : 'text-slate-600'
                   }`}>
                     <Github className="w-4 h-4" />
                     Code
-                  </button>
-                  <button className={`flex items-center gap-2 hover:text-sky-600 transition-colors text-sm ${
-                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
-                  }`}>
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
