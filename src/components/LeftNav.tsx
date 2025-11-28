@@ -1,5 +1,4 @@
-import { Home, User, Sparkles, Briefcase, FileText, Star, Mail, Moon, Sun } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { Home, User, Sparkles, Briefcase, FileText, Mail, Moon, Sun } from 'lucide-react';
 
 interface LeftNavProps {
   activeSection: string;
@@ -8,9 +7,6 @@ interface LeftNavProps {
 }
 
 export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavProps) {
-  const [tabWidths, setTabWidths] = useState<{ [key: string]: number }>({});
-  const measureRef = useRef<HTMLSpanElement>(null);
-
   const navItems = [
     { id: 'home', label: 'Home', icon: Home, color: 'lavender' },
     { id: 'about', label: 'About Me', icon: User, color: 'peach' },
@@ -20,28 +16,6 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
     { id: 'contact', label: 'Contact Me', icon: Mail, color: 'periwinkle' },
   ];
 
-  // Measure text widths for dynamic sizing
-  useEffect(() => {
-    if (measureRef.current) {
-      const newWidths: { [key: string]: number } = {};
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-      
-      if (context) {
-        // Set font to match the bold text style
-        context.font = 'bold 14px system-ui, -apple-system, sans-serif';
-        
-        navItems.forEach((item) => {
-          const textWidth = context.measureText(item.label).width;
-          // Add padding: icon width (20px) + gap (8px) + text + padding (24px left+right)
-          newWidths[item.id] = Math.ceil(textWidth + 20 + 8 + 24);
-        });
-        
-        setTabWidths(newWidths);
-      }
-    }
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -49,7 +23,7 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
     }
   };
 
-  const getTabColor = (color: string, isActive: boolean, isDarkMode: boolean) => {
+  const getTabStyles = (color: string, isActive: boolean, isDarkMode: boolean) => {
     const colors: { [key: string]: { light: string; lightActive: string; dark: string; darkActive: string; darkActiveBg: string } } = {
       lavender: {
         light: 'bg-purple-200 text-purple-900 border-purple-400',
@@ -96,47 +70,33 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
     };
 
     const colorSet = colors[color];
-    if (isDarkMode) {
-      return isActive ? colorSet.darkActive : colorSet.dark;
-    }
-    return isActive ? colorSet.lightActive : colorSet.light;
-  };
-
-  const getTabBackgroundColor = (color: string, isActive: boolean, isDarkMode: boolean) => {
-    if (!isActive || !isDarkMode) return undefined;
-    
-    const colors: { [key: string]: string } = {
-      lavender: '#3b0764',
-      peach: '#7c2d12',
-      mint: '#064e3b',
-      sky: '#082f49',
-      cream: '#713f12',
-      periwinkle: '#172554',
+    return {
+      className: isDarkMode
+        ? (isActive ? colorSet.darkActive : colorSet.dark)
+        : (isActive ? colorSet.lightActive : colorSet.light),
+      backgroundColor: (isActive && isDarkMode) ? colorSet.darkActiveBg : undefined
     };
-    
-    return colors[color];
   };
 
   return (
     <>
       {/* Mobile Navigation */}
-      <nav className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t-2 transition-colors duration-300 ${
-        isDarkMode 
-          ? 'bg-slate-900 border-slate-800' 
-          : 'bg-slate-200 border-slate-400'
-      }`}>
+      <nav className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t-2 transition-colors duration-300 ${isDarkMode
+        ? 'bg-slate-900 border-slate-800'
+        : 'bg-slate-200 border-slate-400'
+        }`}>
         <div className="relative flex overflow-x-auto pb-2 px-2 pt-2 gap-1 scrollbar-hide">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
+            const styles = getTabStyles(item.color, isActive, isDarkMode);
             return (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 rounded-t-lg border-2 border-b-0 transition-all min-w-[70px] ${
-                  getTabColor(item.color, isActive, isDarkMode)
-                } ${isActive ? 'translate-y-0' : 'translate-y-1'}`}
-                style={isActive && isDarkMode ? { backgroundColor: getTabBackgroundColor(item.color, isActive, isDarkMode) } : undefined}
+                className={`flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 rounded-t-lg border-2 border-b-0 transition-all min-w-[70px] ${styles.className
+                  } ${isActive ? 'translate-y-0' : 'translate-y-1'}`}
+                style={styles.backgroundColor ? { backgroundColor: styles.backgroundColor } : undefined}
               >
                 <Icon className="w-4 h-4" />
                 <span className="text-xs whitespace-nowrap">{item.label}</span>
@@ -149,30 +109,27 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
       {/* Dark Mode Toggle - Mobile Floating Button */}
       <button
         onClick={() => setIsDarkMode(!isDarkMode)}
-        className={`lg:hidden fixed z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${
-          isDarkMode 
-            ? 'bg-slate-800 text-slate-300 hover:bg-slate-700 border-2 border-slate-700' 
-            : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-2 border-slate-400'
-        }`}
+        className={`lg:hidden fixed z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${isDarkMode
+          ? 'bg-slate-800 text-slate-300 hover:bg-slate-700 border-2 border-slate-700'
+          : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-2 border-slate-400'
+          }`}
         style={{ bottom: '6rem', right: '1rem' }}
       >
         {isDarkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
       </button>
 
       {/* Desktop Navigation - Filing Cabinet Style */}
-      <nav className={`hidden lg:flex fixed left-0 top-0 h-screen w-48 flex-col items-center py-8 z-50 transition-colors duration-300 ${
-        isDarkMode 
-          ? 'bg-slate-900' 
-          : 'bg-slate-200'
-      }`}>
+      <nav className={`hidden lg:flex fixed left-0 top-0 h-screen w-48 flex-col items-center py-8 z-50 transition-colors duration-300 ${isDarkMode
+        ? 'bg-slate-900'
+        : 'bg-slate-200'
+        }`}>
         {/* Dark Mode Toggle */}
         <button
           onClick={() => setIsDarkMode(!isDarkMode)}
-          className={`p-4 h-12 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border-2 ${
-            isDarkMode 
-              ? 'bg-slate-800 text-slate-400 hover:bg-slate-700 border-slate-700' 
-              : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-slate-400'
-          }`}
+          className={`p-4 h-12 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border-2 ${isDarkMode
+            ? 'bg-slate-800 text-slate-400 hover:bg-slate-700 border-slate-700'
+            : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-slate-400'
+            }`}
         >
           {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
@@ -184,14 +141,14 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
             const isActive = activeSection === item.id;
             const activeIndex = navItems.findIndex(item => item.id === activeSection);
             const isPushed = index < activeIndex;
-            
+            const styles = getTabStyles(item.color, isActive, isDarkMode);
+
             return (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative transition-all duration-300 flex items-center justify-center overflow-hidden ${
-                  getTabColor(item.color, isActive, isDarkMode)
-                } ${isActive ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`}
+                className={`relative transition-all duration-300 flex items-center justify-center overflow-hidden ${styles.className
+                  } ${isActive ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`}
                 title={item.label}
                 style={{
                   width: '48px',
@@ -202,12 +159,12 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
                   borderRightWidth: '0',
                   marginRight: isPushed ? '-110px' : '0',
                   padding: '8px 0',
-                  backgroundColor: isActive && isDarkMode ? getTabBackgroundColor(item.color, isActive, isDarkMode) : undefined,
+                  backgroundColor: styles.backgroundColor,
                 }}
               >
                 <div className="flex flex-col items-center justify-center h-full">
                   {isActive ? (
-                    <div 
+                    <div
                       className="flex items-center gap-2"
                       style={{ transform: 'rotate(-90deg)' }}
                     >
@@ -217,7 +174,7 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
                       </span>
                     </div>
                   ) : (
-                    <Icon 
+                    <Icon
                       className="w-4 h-4 flex-shrink-0"
                       style={{ transform: 'rotate(-90deg)' }}
                     />
@@ -226,13 +183,13 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
 
                 {/* Shadow for inactive tabs */}
                 {!isActive && (
-                  <div 
-                    className="absolute inset-0 pointer-events-none" 
+                  <div
+                    className="absolute inset-0 pointer-events-none"
                     style={{
                       borderTopLeftRadius: '12px',
                       borderBottomLeftRadius: '12px',
                       overflow: 'hidden',
-                      background: isDarkMode 
+                      background: isDarkMode
                         ? 'linear-gradient(0deg, rgba(0,0,0,0.3) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.3) 100%)'
                         : 'linear-gradient(0deg, rgba(0,0,0,0.15) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.15) 100%)'
                     }}
@@ -244,9 +201,8 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
         </div>
 
         {/* Bottom base */}
-        <div className={`w-full h-2 border-t-2 ${
-          isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-300 border-slate-400'
-        }`} />
+        <div className={`w-full h-2 border-t-2 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-300 border-slate-400'
+          }`} />
       </nav>
     </>
   );

@@ -1,17 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = App;
-const react_1 = require("react");
-const LeftNav_1 = require("./components/LeftNav");
-const Landing_1 = require("./components/Landing");
-const About_1 = require("./components/About");
-const Skills_1 = require("./components/Skills");
-const Work_1 = require("./components/Work");
-const Resume_1 = require("./components/Resume");
-const Contact_1 = require("./components/Contact");
-function App() {
-    const [activeSection, setActiveSection] = (0, react_1.useState)('home');
-    const [isDarkMode, setIsDarkMode] = (0, react_1.useState)(false);
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState, useEffect } from 'react';
+import { LeftNav } from './components/LeftNav';
+import { Landing } from './components/Landing';
+import { About } from './components/About';
+import { Skills } from './components/Skills';
+import { Work } from './components/Work';
+import { Resume } from './components/Resume';
+import { Contact } from './components/Contact';
+export default function App() {
+    const [activeSection, setActiveSection] = useState('home');
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const getSectionBackground = (section, isDark) => {
         const backgrounds = {
             home: { light: '#faf5ff', dark: '#3b0764' },
@@ -25,7 +23,7 @@ function App() {
         const bg = backgrounds[section] || backgrounds.home;
         return isDark ? bg.dark : bg.light;
     };
-    (0, react_1.useEffect)(() => {
+    useEffect(() => {
         const handleScroll = () => {
             const sections = ['home', 'about', 'skills', 'work', 'resume', 'extra', 'contact'];
             const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -44,16 +42,5 @@ function App() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     const bgColor = getSectionBackground(activeSection, isDarkMode);
-    return (<div className="flex min-h-screen transition-colors duration-500" style={{ backgroundColor: bgColor }}>
-      <LeftNav_1.LeftNav activeSection={activeSection} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
-      
-      <main className="flex-1 ml-0 lg:ml-48 transition-colors duration-300" style={{ backgroundColor: bgColor }}>
-        <Landing_1.Landing isDarkMode={isDarkMode}/>
-        <About_1.About isDarkMode={isDarkMode}/>
-        <Skills_1.Skills isDarkMode={isDarkMode}/>
-        <Work_1.Work isDarkMode={isDarkMode}/>
-        <Resume_1.Resume isDarkMode={isDarkMode}/>
-        <Contact_1.Contact isDarkMode={isDarkMode}/>
-      </main>
-    </div>);
+    return (_jsxs("div", { className: "flex min-h-screen transition-colors duration-500", style: { backgroundColor: bgColor }, children: [_jsx(LeftNav, { activeSection: activeSection, isDarkMode: isDarkMode, setIsDarkMode: setIsDarkMode }), _jsxs("main", { className: "flex-1 ml-0 lg:ml-48 transition-colors duration-300", style: { backgroundColor: bgColor }, children: [_jsx(Landing, { isDarkMode: isDarkMode }), _jsx(About, { isDarkMode: isDarkMode }), _jsx(Skills, { isDarkMode: isDarkMode }), _jsx(Work, { isDarkMode: isDarkMode }), _jsx(Resume, { isDarkMode: isDarkMode }), _jsx(Contact, { isDarkMode: isDarkMode })] })] }));
 }

@@ -1,44 +1,21 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeftNav = LeftNav;
-const lucide_react_1 = require("lucide-react");
-const react_1 = require("react");
-function LeftNav({ activeSection, isDarkMode, setIsDarkMode }) {
-    const [tabWidths, setTabWidths] = (0, react_1.useState)({});
-    const measureRef = (0, react_1.useRef)(null);
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { Home, User, Sparkles, Briefcase, FileText, Mail, Moon, Sun } from 'lucide-react';
+export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }) {
     const navItems = [
-        { id: 'home', label: 'Home', icon: lucide_react_1.Home, color: 'lavender' },
-        { id: 'about', label: 'About Me', icon: lucide_react_1.User, color: 'peach' },
-        { id: 'skills', label: 'Skills', icon: lucide_react_1.Sparkles, color: 'mint' },
-        { id: 'work', label: 'Work', icon: lucide_react_1.Briefcase, color: 'sky' },
-        { id: 'resume', label: 'Resume', icon: lucide_react_1.FileText, color: 'cream' },
-        { id: 'contact', label: 'Contact Me', icon: lucide_react_1.Mail, color: 'periwinkle' },
+        { id: 'home', label: 'Home', icon: Home, color: 'lavender' },
+        { id: 'about', label: 'About Me', icon: User, color: 'peach' },
+        { id: 'skills', label: 'Skills', icon: Sparkles, color: 'mint' },
+        { id: 'work', label: 'Work', icon: Briefcase, color: 'sky' },
+        { id: 'resume', label: 'Resume', icon: FileText, color: 'cream' },
+        { id: 'contact', label: 'Contact Me', icon: Mail, color: 'periwinkle' },
     ];
-    // Measure text widths for dynamic sizing
-    (0, react_1.useEffect)(() => {
-        if (measureRef.current) {
-            const newWidths = {};
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            if (context) {
-                // Set font to match the bold text style
-                context.font = 'bold 14px system-ui, -apple-system, sans-serif';
-                navItems.forEach((item) => {
-                    const textWidth = context.measureText(item.label).width;
-                    // Add padding: icon width (20px) + gap (8px) + text + padding (24px left+right)
-                    newWidths[item.id] = Math.ceil(textWidth + 20 + 8 + 24);
-                });
-                setTabWidths(newWidths);
-            }
-        }
-    }, []);
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
     };
-    const getTabColor = (color, isActive, isDarkMode) => {
+    const getTabStyles = (color, isActive, isDarkMode) => {
         const colors = {
             lavender: {
                 light: 'bg-purple-200 text-purple-900 border-purple-400',
@@ -84,101 +61,49 @@ function LeftNav({ activeSection, isDarkMode, setIsDarkMode }) {
             },
         };
         const colorSet = colors[color];
-        if (isDarkMode) {
-            return isActive ? colorSet.darkActive : colorSet.dark;
-        }
-        return isActive ? colorSet.lightActive : colorSet.light;
-    };
-    const getTabBackgroundColor = (color, isActive, isDarkMode) => {
-        if (!isActive || !isDarkMode)
-            return undefined;
-        const colors = {
-            lavender: '#3b0764',
-            peach: '#7c2d12',
-            mint: '#064e3b',
-            sky: '#082f49',
-            cream: '#713f12',
-            periwinkle: '#172554',
+        return {
+            className: isDarkMode
+                ? (isActive ? colorSet.darkActive : colorSet.dark)
+                : (isActive ? colorSet.lightActive : colorSet.light),
+            backgroundColor: (isActive && isDarkMode) ? colorSet.darkActiveBg : undefined
         };
-        return colors[color];
     };
-    return (<>
-      {/* Mobile Navigation */}
-      <nav className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t-2 transition-colors duration-300 ${isDarkMode
-            ? 'bg-slate-900 border-slate-800'
-            : 'bg-slate-200 border-slate-400'}`}>
-        <div className="relative flex overflow-x-auto pb-2 px-2 pt-2 gap-1 scrollbar-hide">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.id;
-            return (<button key={item.id} onClick={() => scrollToSection(item.id)} className={`flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 rounded-t-lg border-2 border-b-0 transition-all min-w-[70px] ${getTabColor(item.color, isActive, isDarkMode)} ${isActive ? 'translate-y-0' : 'translate-y-1'}`} style={isActive && isDarkMode ? { backgroundColor: getTabBackgroundColor(item.color, isActive, isDarkMode) } : undefined}>
-                <Icon className="w-4 h-4"/>
-                <span className="text-xs whitespace-nowrap">{item.label}</span>
-              </button>);
-        })}
-        </div>
-      </nav>
-
-      {/* Dark Mode Toggle - Mobile Floating Button */}
-      <button onClick={() => setIsDarkMode(!isDarkMode)} className={`lg:hidden fixed z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${isDarkMode
-            ? 'bg-slate-800 text-slate-300 hover:bg-slate-700 border-2 border-slate-700'
-            : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-2 border-slate-400'}`} style={{ bottom: '6rem', right: '1rem' }}>
-        {isDarkMode ? <lucide_react_1.Sun className="w-6 h-6"/> : <lucide_react_1.Moon className="w-6 h-6"/>}
-      </button>
-
-      {/* Desktop Navigation - Filing Cabinet Style */}
-      <nav className={`hidden lg:flex fixed left-0 top-0 h-screen w-48 flex-col items-center py-8 z-50 transition-colors duration-300 ${isDarkMode
-            ? 'bg-slate-900'
-            : 'bg-slate-200'}`}>
-        {/* Dark Mode Toggle */}
-        <button onClick={() => setIsDarkMode(!isDarkMode)} className={`p-4 h-12 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border-2 ${isDarkMode
-            ? 'bg-slate-800 text-slate-400 hover:bg-slate-700 border-slate-700'
-            : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-slate-400'}`}>
-          {isDarkMode ? <lucide_react_1.Sun className="w-5 h-5"/> : <lucide_react_1.Moon className="w-5 h-5"/>}
-        </button>
-
-        {/* Filing Cabinet Tabs - Sideways tabs */}
-        <div className="flex-1 flex flex-col justify-center items-end gap-1 overflow-visible" style={{ paddingLeft: '75px' }}>
-          {navItems.map((item, index) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.id;
-            const activeIndex = navItems.findIndex(item => item.id === activeSection);
-            const isPushed = index < activeIndex;
-            return (<button key={item.id} onClick={() => scrollToSection(item.id)} className={`relative transition-all duration-300 flex items-center justify-center overflow-hidden ${getTabColor(item.color, isActive, isDarkMode)} ${isActive ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`} title={item.label} style={{
-                    width: '48px',
-                    height: isActive ? '160px' : '48px',
-                    borderTopLeftRadius: '12px',
-                    borderBottomLeftRadius: '12px',
-                    borderWidth: '2px',
-                    borderRightWidth: '0',
-                    marginRight: isPushed ? '-110px' : '0',
-                    padding: '8px 0',
-                    backgroundColor: isActive && isDarkMode ? getTabBackgroundColor(item.color, isActive, isDarkMode) : undefined,
-                }}>
-                <div className="flex flex-col items-center justify-center h-full">
-                  {isActive ? (<div className="flex items-center gap-2" style={{ transform: 'rotate(-90deg)' }}>
-                      <Icon className="w-4 h-4 flex-shrink-0"/>
-                      <span className="text-xs whitespace-nowrap font-bold">
-                        {item.label}
-                      </span>
-                    </div>) : (<Icon className="w-4 h-4 flex-shrink-0" style={{ transform: 'rotate(-90deg)' }}/>)}
-                </div>
-
-                {/* Shadow for inactive tabs */}
-                {!isActive && (<div className="absolute inset-0 pointer-events-none" style={{
-                        borderTopLeftRadius: '12px',
-                        borderBottomLeftRadius: '12px',
-                        overflow: 'hidden',
-                        background: isDarkMode
-                            ? 'linear-gradient(0deg, rgba(0,0,0,0.3) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.3) 100%)'
-                            : 'linear-gradient(0deg, rgba(0,0,0,0.15) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.15) 100%)'
-                    }}/>)}
-              </button>);
-        })}
-        </div>
-
-        {/* Bottom base */}
-        <div className={`w-full h-2 border-t-2 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-300 border-slate-400'}`}/>
-      </nav>
-    </>);
+    return (_jsxs(_Fragment, { children: [_jsx("nav", { className: `lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t-2 transition-colors duration-300 ${isDarkMode
+                    ? 'bg-slate-900 border-slate-800'
+                    : 'bg-slate-200 border-slate-400'}`, children: _jsx("div", { className: "relative flex overflow-x-auto pb-2 px-2 pt-2 gap-1 scrollbar-hide", children: navItems.map((item) => {
+                        const Icon = item.icon;
+                        const isActive = activeSection === item.id;
+                        const styles = getTabStyles(item.color, isActive, isDarkMode);
+                        return (_jsxs("button", { onClick: () => scrollToSection(item.id), className: `flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 rounded-t-lg border-2 border-b-0 transition-all min-w-[70px] ${styles.className} ${isActive ? 'translate-y-0' : 'translate-y-1'}`, style: styles.backgroundColor ? { backgroundColor: styles.backgroundColor } : undefined, children: [_jsx(Icon, { className: "w-4 h-4" }), _jsx("span", { className: "text-xs whitespace-nowrap", children: item.label })] }, item.id));
+                    }) }) }), _jsx("button", { onClick: () => setIsDarkMode(!isDarkMode), className: `lg:hidden fixed z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${isDarkMode
+                    ? 'bg-slate-800 text-slate-300 hover:bg-slate-700 border-2 border-slate-700'
+                    : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-2 border-slate-400'}`, style: { bottom: '6rem', right: '1rem' }, children: isDarkMode ? _jsx(Sun, { className: "w-6 h-6" }) : _jsx(Moon, { className: "w-6 h-6" }) }), _jsxs("nav", { className: `hidden lg:flex fixed left-0 top-0 h-screen w-48 flex-col items-center py-8 z-50 transition-colors duration-300 ${isDarkMode
+                    ? 'bg-slate-900'
+                    : 'bg-slate-200'}`, children: [_jsx("button", { onClick: () => setIsDarkMode(!isDarkMode), className: `p-4 h-12 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border-2 ${isDarkMode
+                            ? 'bg-slate-800 text-slate-400 hover:bg-slate-700 border-slate-700'
+                            : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-slate-400'}`, children: isDarkMode ? _jsx(Sun, { className: "w-5 h-5" }) : _jsx(Moon, { className: "w-5 h-5" }) }), _jsx("div", { className: "flex-1 flex flex-col justify-center items-end gap-1 overflow-visible", style: { paddingLeft: '75px' }, children: navItems.map((item, index) => {
+                            const Icon = item.icon;
+                            const isActive = activeSection === item.id;
+                            const activeIndex = navItems.findIndex(item => item.id === activeSection);
+                            const isPushed = index < activeIndex;
+                            const styles = getTabStyles(item.color, isActive, isDarkMode);
+                            return (_jsxs("button", { onClick: () => scrollToSection(item.id), className: `relative transition-all duration-300 flex items-center justify-center overflow-hidden ${styles.className} ${isActive ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`, title: item.label, style: {
+                                    width: '48px',
+                                    height: isActive ? '160px' : '48px',
+                                    borderTopLeftRadius: '12px',
+                                    borderBottomLeftRadius: '12px',
+                                    borderWidth: '2px',
+                                    borderRightWidth: '0',
+                                    marginRight: isPushed ? '-110px' : '0',
+                                    padding: '8px 0',
+                                    backgroundColor: styles.backgroundColor,
+                                }, children: [_jsx("div", { className: "flex flex-col items-center justify-center h-full", children: isActive ? (_jsxs("div", { className: "flex items-center gap-2", style: { transform: 'rotate(-90deg)' }, children: [_jsx(Icon, { className: "w-4 h-4 flex-shrink-0" }), _jsx("span", { className: "text-xs whitespace-nowrap font-bold", children: item.label })] })) : (_jsx(Icon, { className: "w-4 h-4 flex-shrink-0", style: { transform: 'rotate(-90deg)' } })) }), !isActive && (_jsx("div", { className: "absolute inset-0 pointer-events-none", style: {
+                                            borderTopLeftRadius: '12px',
+                                            borderBottomLeftRadius: '12px',
+                                            overflow: 'hidden',
+                                            background: isDarkMode
+                                                ? 'linear-gradient(0deg, rgba(0,0,0,0.3) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.3) 100%)'
+                                                : 'linear-gradient(0deg, rgba(0,0,0,0.15) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.15) 100%)'
+                                        } }))] }, item.id));
+                        }) }), _jsx("div", { className: `w-full h-2 border-t-2 ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-300 border-slate-400'}` })] })] }));
 }

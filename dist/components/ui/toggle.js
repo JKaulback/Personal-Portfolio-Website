@@ -1,24 +1,9 @@
 "use client";
-"use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.toggleVariants = void 0;
-exports.Toggle = Toggle;
-const React = require("react");
-const TogglePrimitive = require("@radix-ui/react-toggle@1.1.2");
-const class_variance_authority_0_7_1_1 = require("class-variance-authority@0.7.1");
-const utils_1 = require("./utils");
-const toggleVariants = (0, class_variance_authority_0_7_1_1.cva)("inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,box-shadow] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap", {
+import { jsx as _jsx } from "react/jsx-runtime";
+import * as TogglePrimitive from "@radix-ui/react-toggle";
+import { cva } from "class-variance-authority";
+import { cn } from "./utils";
+const toggleVariants = cva("inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,box-shadow] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap", {
     variants: {
         variant: {
             default: "bg-transparent",
@@ -35,8 +20,7 @@ const toggleVariants = (0, class_variance_authority_0_7_1_1.cva)("inline-flex it
         size: "default",
     },
 });
-exports.toggleVariants = toggleVariants;
-function Toggle(_a) {
-    var { className, variant, size } = _a, props = __rest(_a, ["className", "variant", "size"]);
-    return (<TogglePrimitive.Root data-slot="toggle" className={(0, utils_1.cn)(toggleVariants({ variant, size, className }))} {...props}/>);
+function Toggle({ className, variant, size, ...props }) {
+    return (_jsx(TogglePrimitive.Root, { "data-slot": "toggle", className: cn(toggleVariants({ variant, size, className })), ...props }));
 }
+export { Toggle, toggleVariants };

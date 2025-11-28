@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useIsMobile = useIsMobile;
-const React = require("react");
+import * as React from "react";
 const MOBILE_BREAKPOINT = 768;
-function useIsMobile() {
+export function useIsMobile() {
     const [isMobile, setIsMobile] = React.useState(undefined);
     React.useEffect(() => {
         const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);

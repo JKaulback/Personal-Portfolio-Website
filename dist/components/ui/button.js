@@ -1,23 +1,8 @@
-"use strict";
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.buttonVariants = void 0;
-exports.Button = Button;
-const React = require("react");
-const react_slot_1_1_2_1 = require("@radix-ui/react-slot@1.1.2");
-const class_variance_authority_0_7_1_1 = require("class-variance-authority@0.7.1");
-const utils_1 = require("./utils");
-const buttonVariants = (0, class_variance_authority_0_7_1_1.cva)("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive", {
+import { jsx as _jsx } from "react/jsx-runtime";
+import { Slot } from "@radix-ui/react-slot";
+import { cva } from "class-variance-authority";
+import { cn } from "./utils";
+const buttonVariants = cva("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive", {
     variants: {
         variant: {
             default: "bg-primary text-primary-foreground hover:bg-primary/90",
@@ -39,9 +24,8 @@ const buttonVariants = (0, class_variance_authority_0_7_1_1.cva)("inline-flex it
         size: "default",
     },
 });
-exports.buttonVariants = buttonVariants;
-function Button(_a) {
-    var { className, variant, size, asChild = false } = _a, props = __rest(_a, ["className", "variant", "size", "asChild"]);
-    const Comp = asChild ? react_slot_1_1_2_1.Slot : "button";
-    return (<Comp data-slot="button" className={(0, utils_1.cn)(buttonVariants({ variant, size, className }))} {...props}/>);
+function Button({ className, variant, size, asChild = false, ...props }) {
+    const Comp = asChild ? Slot : "button";
+    return (_jsx(Comp, { "data-slot": "button", className: cn(buttonVariants({ variant, size, className })), ...props }));
 }
+export { Button, buttonVariants };

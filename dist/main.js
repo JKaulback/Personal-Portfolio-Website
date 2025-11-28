@@ -1,6 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const client_1 = require("react-dom/client");
-const App_tsx_1 = require("./App.tsx");
-require("./index.css");
-(0, client_1.createRoot)(document.getElementById("root")).render(<App_tsx_1.default />);
+import { jsx as _jsx } from "react/jsx-runtime";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./index.css";
+createRoot(document.getElementById("root")).render(_jsx(App, {}));
