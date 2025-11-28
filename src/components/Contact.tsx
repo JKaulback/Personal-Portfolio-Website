@@ -1,5 +1,6 @@
 import { Mail, MapPin, Linkedin, Github, Twitter } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha'
 import { sendEmail } from '../services/email_service';
 
 interface ContactProps {
@@ -12,6 +13,8 @@ export function Contact({ isDarkMode }: ContactProps) {
     email: '',
     message: '',
   });
+
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +37,10 @@ export function Contact({ isDarkMode }: ContactProps) {
       [e.target.name]: e.target.value,
     });
   };
+
+  const processReCaptcha = () => {
+    setIsSubmitDisabled(false);
+  }
 
   return (
     <section id="contact" className="min-h-screen flex items-center justify-center p-8 pb-24 lg:pb-8 transition-colors duration-300">
@@ -248,13 +255,29 @@ export function Contact({ isDarkMode }: ContactProps) {
             <button
               type="submit"
               className={`w-full px-6 py-3 rounded-xl transition-colors border-2 ${
-                isDarkMode 
+                  !isSubmitDisabled && isDarkMode 
                   ? 'bg-blue-600 text-white border-blue-500 hover:bg-blue-700' 
-                  : 'bg-blue-500 text-white border-blue-400 hover:bg-blue-600 shadow-md'
+                  : !isSubmitDisabled && !isDarkMode
+                  ? 'bg-blue-500 text-white border-blue-400 hover:bg-blue-600 shadow-md'
+                  : isDarkMode
+                  ? 'bg-stone-600 text-white border-blue-500'
+                  : 'bg-stone-600 border-blue-500'
               }`}
+              disabled={isSubmitDisabled}
+
             >
-              Send Message
+              {isSubmitDisabled
+              ? '↓ Are You Human?'
+              : 'Send Message'}
             </button>
+            
+            <ReCAPTCHA 
+              key={isDarkMode ? "dark" : "light"}
+              sitekey="6Lc7FhosAAAAAKLBzv3reVs6b__-OPzrBDomfcUk" 
+              onChange={processReCaptcha}
+              theme={isDarkMode ? "dark" : "light"}
+            />
+              
           </form>
         </div>
       </div>
