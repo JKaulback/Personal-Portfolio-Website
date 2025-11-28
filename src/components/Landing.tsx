@@ -1,5 +1,6 @@
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import profilePicture from '../assets/profile-picture.jpg';
 import { useEffect, useState } from 'react';
 
 interface LandingProps {
@@ -42,9 +43,9 @@ export function Landing({ isDarkMode }: LandingProps) {
               ? 'bg-slate-900 border-slate-800 shadow-lg' 
               : 'bg-white border-purple-200 shadow-lg shadow-purple-200/50'
           }`}>
-            <div className="relative w-32 h-32 rounded-2xl overflow-hidden">
+            <div className="relative w-40 h-40 rounded-2xl overflow-hidden">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
+                src={profilePicture}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
