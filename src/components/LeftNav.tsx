@@ -1,4 +1,4 @@
-import { Home, User, Sparkles, Briefcase, FileText, Mail, Moon, Sun } from 'lucide-react';
+import { Home, User, Sparkles, Briefcase, FileText, Mail, Moon, Sun, BookOpen } from 'lucide-react';
 
 interface LeftNavProps {
   activeSection: string;
@@ -13,6 +13,7 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
     { id: 'skills', label: 'Skills', icon: Sparkles, color: 'mint' },
     { id: 'work', label: 'Work', icon: Briefcase, color: 'sky' },
     { id: 'resume', label: 'Resume', icon: FileText, color: 'cream' },
+    { id: 'extra', label: 'Learning', icon: BookOpen, color: 'rose' },
     { id: 'contact', label: 'Contact Me', icon: Mail, color: 'periwinkle' },
   ];
 
@@ -66,6 +67,13 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
         dark: 'bg-blue-900/30 text-blue-300 border-blue-800',
         darkActive: 'text-blue-200 border-blue-900',
         darkActiveBg: '#172554',
+      },
+      rose: {
+        light: 'bg-pink-200 text-pink-900 border-pink-400',
+        lightActive: 'bg-pink-50 text-pink-700 border-pink-200',
+        dark: 'bg-pink-900/30 text-pink-300 border-pink-800',
+        darkActive: 'text-pink-200 border-pink-900',
+        darkActiveBg: '#831843',
       },
     };
 

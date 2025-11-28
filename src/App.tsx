@@ -6,6 +6,7 @@ import { Skills } from './components/Skills';
 import { Work } from './components/Work';
 import { Resume } from './components/Resume';
 import { Contact } from './components/Contact';
+import { LearningNarrative } from './components/LearningNarrative';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -49,13 +50,13 @@ export default function App() {
   const bgColor = getSectionBackground(activeSection, isDarkMode);
 
   return (
-    <div 
+    <div
       className="flex min-h-screen transition-colors duration-500"
       style={{ backgroundColor: bgColor }}
     >
       <LeftNav activeSection={activeSection} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      
-      <main 
+
+      <main
         className="flex-1 ml-0 lg:ml-48 transition-colors duration-300"
         style={{ backgroundColor: bgColor }}
       >
@@ -64,6 +65,7 @@ export default function App() {
         <Skills isDarkMode={isDarkMode} />
         <Work isDarkMode={isDarkMode} />
         <Resume isDarkMode={isDarkMode} />
+        <LearningNarrative isDarkMode={isDarkMode} />
         <Contact isDarkMode={isDarkMode} />
       </main>
     </div>
