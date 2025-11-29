@@ -1,4 +1,5 @@
-import { Calendar, MapPin, Award, GraduationCap } from 'lucide-react';
+import { Calendar, MapPin, Award, GraduationCap, Download } from 'lucide-react';
+import resumePdf from '../assets/Resume.pdf';
 
 interface ResumeProps {
   isDarkMode: boolean;
@@ -54,25 +55,41 @@ export function Resume({ isDarkMode }: ResumeProps) {
   return (
     <section id="resume" className="min-h-screen flex items-center justify-center p-8 transition-colors duration-300">
       <div className="max-w-5xl w-full">
-        <div className={`mb-12 p-6 rounded-2xl border-2 transition-colors duration-300 ${isDarkMode
-            ? 'bg-slate-900 border-slate-800'
-            : 'bg-white border-slate-200 shadow-lg'
+        <div className={`mb-12 p-6 rounded-2xl border-2 transition-colors duration-300 relative ${isDarkMode
+          ? 'bg-slate-900 border-slate-800'
+          : 'bg-white border-slate-200 shadow-lg'
           }`}>
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border transition-colors duration-300 ${isDarkMode
-              ? 'bg-yellow-900/30 text-yellow-300 border-yellow-800'
-              : 'bg-yellow-100 text-yellow-700 border-yellow-300'
-            }`}>
-            <div className="w-2 h-2 bg-yellow-500 rounded-full" />
-            Resume Module
+          <div className="flex justify-between items-start">
+            <div>
+              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border transition-colors duration-300 ${isDarkMode
+                ? 'bg-yellow-900/30 text-yellow-300 border-yellow-800'
+                : 'bg-yellow-100 text-yellow-700 border-yellow-300'
+                }`}>
+                <div className="w-2 h-2 bg-yellow-500 rounded-full" />
+                Resume Module
+              </div>
+              <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
+                }`}>
+                Professional Experience
+              </h2>
+              <p className={`transition-colors duration-300 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                }`}>
+                My professional journey
+              </p>
+            </div>
+
+            <a
+              href={resumePdf}
+              download="Resume.pdf"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isDarkMode
+                ? 'bg-yellow-600 hover:bg-yellow-500 text-white shadow-lg shadow-yellow-900/20'
+                : 'bg-yellow-500 hover:bg-yellow-400 text-white shadow-lg shadow-yellow-500/30'
+                }`}
+            >
+              <Download className="w-4 h-4" />
+              <span>Download CV</span>
+            </a>
           </div>
-          <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
-            }`}>
-            Professional Experience
-          </h2>
-          <p className={`transition-colors duration-300 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
-            }`}>
-            My professional journey
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -164,8 +181,8 @@ export function Resume({ isDarkMode }: ResumeProps) {
               <div className="space-y-2">
                 {certifications.map((cert, index) => (
                   <div key={index} className={`p-3 rounded-lg border-2 text-sm ${isDarkMode
-                      ? 'bg-yellow-900/20 border-yellow-800/50 text-slate-300'
-                      : 'bg-yellow-50 border-yellow-200 text-slate-700'
+                    ? 'bg-yellow-900/20 border-yellow-800/50 text-slate-300'
+                    : 'bg-yellow-50 border-yellow-200 text-slate-700'
                     }`}>
                     {cert}
                   </div>
