@@ -8,6 +8,7 @@ import { Contact } from './components/Contact';
 import { LearningNarrative } from './components/LearningNarrative';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { NavigationProvider } from './context/NavigationContext';
+import { Toaster } from 'sonner';
 
 function AppContent() {
   const { sectionBackground } = useTheme();
@@ -40,6 +41,7 @@ export default function App() {
     <ThemeProvider>
       <NavigationProvider>
         <AppContent />
+        <Toaster />
       </NavigationProvider>
     </ThemeProvider>
   );

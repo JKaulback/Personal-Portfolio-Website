@@ -1,5 +1,6 @@
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 import ReCAPTCHA from 'react-google-recaptcha'
 import { sendEmail } from '../services/email_service';
 import { useTheme } from '../context/ThemeContext';
@@ -18,6 +19,10 @@ export function Contact() {
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
+  useEffect(() => {
+    setIsSubmitDisabled(true);
+  }, [isDarkMode]);
+
   const contactInfo = [
     { icon: Mail, label: 'Email', value: 'jtkaulback@gmail.com' },
     { icon: MapPin, label: 'Location', value: 'Bridgewater, NS' },
@@ -32,12 +37,12 @@ export function Contact() {
     e.preventDefault();
 
     sendEmail(formData).then(() => {
-      alert('Message sent successfully!');
+      toast.success('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     })
       .catch((err) => {
         console.error('FAILED...', err);
-        alert('Failed to send message. Please try again.');
+        toast.error('Failed to send message. Please try again.');
       });
   };
 
@@ -208,10 +213,10 @@ export function Contact() {
             <Button
               type="submit"
               className={`w-full px-6 py-3 rounded-xl transition-colors border-2 ${isSubmitDisabled
-                ? 'bg-stone-600 border-indigo-500 text-white'
+                ? 'bg-slate-600 border-purple-500 text-white'
                 : isDarkMode
-                  ? 'bg-indigo-600 text-white border-indigo-500 hover:bg-indigo-700'
-                  : 'bg-indigo-500 text-white border-indigo-400 hover:bg-indigo-600 shadow-md'
+                  ? 'bg-purple-600 text-white border-purple-500 hover:bg-purple-700'
+                  : 'bg-purple-500 text-white border-purple-400 hover:bg-purple-600 shadow-md'
                 }`}
               disabled={isSubmitDisabled}
               style={{
@@ -220,7 +225,7 @@ export function Contact() {
                   ? '#57534e'
                   : undefined, // Let tailwind handle hover states
                 color: '#ffffff',
-                cursor: 'pointer'
+                cursor: isSubmitDisabled ? 'not-allowed' : 'pointer'
               }}
             >
               {isSubmitDisabled ? '↓ Are You Human?' : 'Send Message'}
