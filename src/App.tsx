@@ -51,13 +51,13 @@ export default function App() {
 
   return (
     <div
-      className="flex min-h-screen transition-colors duration-500"
+      className="min-h-screen transition-colors duration-500"
       style={{ backgroundColor: bgColor }}
     >
       <LeftNav activeSection={activeSection} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
       <main
-        className="flex-1 ml-0 lg:ml-48 transition-colors duration-300"
+        className="lg:ml-[12rem] min-w-0 transition-colors duration-300"
         style={{ backgroundColor: bgColor }}
       >
         <Landing isDarkMode={isDarkMode} />
