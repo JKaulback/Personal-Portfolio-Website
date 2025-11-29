@@ -4,6 +4,7 @@ import profilePicture from '../assets/profile-picture.jpg';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useNavigation } from '../context/NavigationContext';
+import { socialLinks } from '../config/data';
 
 export function Landing() {
   const { isDarkMode } = useTheme();
@@ -18,12 +19,6 @@ export function Landing() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const socialLinks = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/JKaulback' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/justin-kaulback-832b8314b/' },
-    { icon: Mail, label: 'Email', href: '#contact' },
-  ];
 
   return (
     <section

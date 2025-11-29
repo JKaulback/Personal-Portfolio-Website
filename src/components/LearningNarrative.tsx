@@ -1,5 +1,6 @@
 import { useTheme } from '../context/ThemeContext';
 import { SectionBadge } from './ui/SectionBadge';
+import { learningNarrative } from '../config/data';
 
 export function LearningNarrative() {
     const { isDarkMode } = useTheme();
@@ -19,53 +20,23 @@ export function LearningNarrative() {
                     </h2>
 
                     <div className="space-y-8">
-                        <div className={`p-6 rounded-xl border-2 transition-all duration-300 ${isDarkMode
-                            ? 'bg-pink-900/10 border-pink-800'
-                            : 'bg-pink-50 border-pink-200'
-                            }`}>
-                            <h3 className={`text-xl font-semibold mb-3 transition-colors duration-300 ${isDarkMode ? 'text-pink-200' : 'text-pink-700'
+                        {learningNarrative.map((item, index) => (
+                            <div key={index} className={`p-6 rounded-xl border-2 transition-all duration-300 ${isDarkMode
+                                ? 'bg-pink-900/10 border-pink-800'
+                                : 'bg-pink-50 border-pink-200'
                                 }`}>
-                                Why did you choose to take IT Programming at NSCC?
-                            </h3>
-                            <p className={`leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-slate-100' : 'text-slate-700'
-                                }`}
-                                style={{ color: isDarkMode ? '#f1f5f9' : undefined }}
-                            >
-                                My interest in software development began with a high school Python and robotics course. I previously worked in the IT industry with J.D. Irving, which was my most fulfilling role to date. While programming concepts come naturally to me, I realized my growth was limited by "not knowing what I didn't know." I enrolled in the IT Programming program at NSCC to bridge those gaps, master modern industry practices, and build a strong professional network.
-                            </p>
-                        </div>
-
-                        <div className={`p-6 rounded-xl border-2 transition-all duration-300 ${isDarkMode
-                            ? 'bg-pink-900/10 border-pink-800'
-                            : 'bg-pink-50 border-pink-200'
-                            }`}>
-                            <h3 className={`text-xl font-semibold mb-3 transition-colors duration-300 ${isDarkMode ? 'text-pink-200' : 'text-pink-700'
-                                }`}>
-                                What knowledge, skills and abilities do you bring with you to NSCC?
-                            </h3>
-                            <p className={`leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-slate-100' : 'text-slate-700'
-                                }`}
-                                style={{ color: isDarkMode ? '#f1f5f9' : undefined }}
-                            >
-                                I bring prior industry experience and a strong foundation in Java and Object-Oriented Principles from UNB, along with skills in technical documentation and public speaking. My background in manual labor has instilled a strong work ethic, prioritizing safety and effective time management. I am adaptable, able to learn new concepts quickly, and skilled at applying theoretical knowledge to practical solutions.
-                            </p>
-                        </div>
-
-                        <div className={`p-6 rounded-xl border-2 transition-all duration-300 ${isDarkMode
-                            ? 'bg-pink-900/10 border-pink-800'
-                            : 'bg-pink-50 border-pink-200'
-                            }`}>
-                            <h3 className={`text-xl font-semibold mb-3 transition-colors duration-300 ${isDarkMode ? 'text-pink-200' : 'text-pink-700'
-                                }`}>
-                                Where do you see yourself in five years?
-                            </h3>
-                            <p className={`leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-slate-100' : 'text-slate-700'
-                                }`}
-                                style={{ color: isDarkMode ? '#f1f5f9' : undefined }}
-                            >
-                                In five years, I envision myself as a key contributor to an organization's IT infrastructure. I aim to be deeply integrated into operations, actively driving improvements, and progressing towards specialization in a specific sector of the industry.
-                            </p>
-                        </div>
+                                <h3 className={`text-xl font-semibold mb-3 transition-colors duration-300 ${isDarkMode ? 'text-pink-200' : 'text-pink-700'
+                                    }`}>
+                                    {item.question}
+                                </h3>
+                                <p className={`leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-slate-100' : 'text-slate-700'
+                                    }`}
+                                    style={{ color: isDarkMode ? '#f1f5f9' : undefined }}
+                                >
+                                    {item.answer}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

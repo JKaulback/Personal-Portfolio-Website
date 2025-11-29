@@ -1,4 +1,3 @@
-import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -8,6 +7,7 @@ import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
 import { SectionBadge } from './ui/SectionBadge';
+import { contactInfo, socialLinks } from '../config/data';
 
 export function Contact() {
   const { isDarkMode } = useTheme();
@@ -22,16 +22,6 @@ export function Contact() {
   useEffect(() => {
     setIsSubmitDisabled(true);
   }, [isDarkMode]);
-
-  const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'jtkaulback@gmail.com' },
-    { icon: MapPin, label: 'Location', value: 'Bridgewater, NS' },
-  ];
-
-  const socialLinks = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/JKaulback' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/justin-kaulback-832b8314b/' },
-  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -220,9 +210,9 @@ export function Contact() {
                 }`}
               disabled={isSubmitDisabled}
               style={{
-                borderColor: isDarkMode ? '#6366f1' : undefined,
+                borderColor: isDarkMode ? '#a855f7' : undefined,
                 backgroundColor: isSubmitDisabled
-                  ? '#57534e'
+                  ? '#475569'
                   : undefined, // Let tailwind handle hover states
                 color: '#ffffff',
                 cursor: isSubmitDisabled ? 'not-allowed' : 'pointer'

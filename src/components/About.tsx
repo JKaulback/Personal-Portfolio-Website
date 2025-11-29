@@ -1,24 +1,10 @@
 import { useTheme } from '../context/ThemeContext';
 import { SectionBadge } from './ui/SectionBadge';
+import { aboutContent } from '../config/data';
 
 export function About() {
   const { isDarkMode } = useTheme();
-  const contentParagraphs = [
-    "I'm a passionate developer with a love for creating well-structured, functional solutions. I have been learning how to use different tools, technologies, and techniques to be successful in any sector of the IT industry.",
-    "When I'm not coding, you can find me invested in a book, spending time in nature, or going on mini-adventures with my wife."
-  ];
-
-  const shortTermGoals = [
-    "Complete my current course and gain a solid foundation in software development",
-    "Acquire full-time employment as a software developer",
-    "Become a trusted team member and contribute to the success of the company"
-  ];
-
-  const longTermGoals = [
-    "Become a team lead and mentor junior developers",
-    "Develop expertise in a specific domain of software development",
-    "Expand my professional network and opportunities"
-  ];
+  const { paragraphs, shortTermGoals, longTermGoals } = aboutContent;
 
   return (
     <section id="about" className="min-h-screen flex items-center justify-center p-8 pt-24 lg:pt-8 transition-colors duration-300">
@@ -37,7 +23,7 @@ export function About() {
           </h2>
 
           <div className="space-y-4">
-            {contentParagraphs.map((text, index) => (
+            {paragraphs.map((text, index) => (
               <div key={index} className={`p-4 rounded-xl border-l-4 transition-colors duration-300 ${isDarkMode
                 ? 'bg-yellow-900/20 border-yellow-500'
                 : 'bg-yellow-50 border-yellow-400'

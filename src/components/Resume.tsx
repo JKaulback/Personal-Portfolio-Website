@@ -2,54 +2,10 @@ import { Calendar, MapPin, Award, GraduationCap, Download } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import resumePdf from '../assets/Resume.pdf';
 import { SectionBadge } from './ui/SectionBadge';
+import { experience, education, certifications } from '../config/data';
 
 export function Resume() {
   const { isDarkMode } = useTheme();
-  const experience = [
-    {
-      role: 'Junior IT Analyst',
-      company: 'J.D. Irving IT Department',
-      location: 'Saint John, NB',
-      period: 'Jan \'19 - Apr \'19',
-      highlights: [
-        'Automated configuration and functional testing processes, improving team efficiency.',
-        'Authored training documentation used for both technical and non-technical co-workers.',
-        'Identified and communicated bugs, contributing to faster issue resolution.',
-        'Collaborated with team members to effectively clarify requirements and constraints.'
-      ],
-    },
-    {
-      role: 'Carpenter/Draftsman',
-      company: 'Sycamore Tiny Homes',
-      location: 'Baker Settlement, NS',
-      period: 'Aug \'23 - Sept \'25',
-      highlights: [
-        'Collaborated with team members and worked independently on custom residential projects.',
-        'Designed detailed 3D models and 2D construction documentation using SketchUp.',
-        'Adapted designs to requirement changes and feedback from clients and team reviews.',
-        'Maintained consistent punctuality and reliability on job sites.'
-      ],
-    }
-  ];
-
-  const education = [
-    {
-      degree: 'IT Programming Diploma',
-      school: 'Nova Scotia Community College',
-      period: 'Sept \'24 - Present'
-    },
-    {
-      degree: 'Bachelor of Science in Software Engineering',
-      school: 'University of New Brunswick',
-      period: 'Sept \'18 - Feb \'20 (Incomplete)',
-    },
-  ];
-
-  const certifications = [
-    'First Place Winner of 2025 RBC HubHacks',
-    'Occupational Health & Safety Act',
-    'Workplace Hazardous Materials Information Systems'
-  ];
 
   return (
     <section id="resume" className="min-h-screen flex items-center justify-center p-8 transition-colors duration-300">

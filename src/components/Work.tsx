@@ -1,39 +1,11 @@
 import { ExternalLink, Github } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import chessGameImage from '../assets/chess_game_in_progress.jpg';
-import foodSafeImage from '../assets/food-safe-ns.png';
-import aiTriviaGameImage from '../assets/AI-trivia-game.png';
 import { useTheme } from '../context/ThemeContext';
 import { SectionBadge } from './ui/SectionBadge';
+import { projects } from '../config/data';
 
 export function Work() {
   const { isDarkMode } = useTheme();
-  const projects = [
-    {
-      title: 'Chess Analysis Program',
-      description: 'A comprehensive chess analysis platform in C++ featuring a fully-functional chess game, UCI chess engine integration and undo/redo system',
-      tags: ['C++', 'MVC Architecture', 'Windows Process Handling', 'Custom UI'],
-      image: chessGameImage,
-      module: 'Game Design',
-      href: 'https://github.com/JKaulback/PROG2100_chess_analysis_program'
-    },
-    {
-      title: 'FoodSafe NS',
-      description: 'A web application that helps Nova Scotians find food banks and browse their available inventory with advanced filtering options for allergens and dietary requirements',
-      tags: ['React', 'Node.js', 'Firebase', 'Express Server', 'API Integration'],
-      image: foodSafeImage,
-      module: 'Full Stack',
-      href: 'https://github.com/JKaulback/food-safe-ns'
-    },
-    {
-      title: 'AI Trivia Game',
-      description: 'An interactive web-based trivia game that uses the power of OpenAI\'s GPT to generate unlimited trivia questions.',
-      tags: ['AI', 'API Integration', 'EJS', 'Node.js'],
-      image: aiTriviaGameImage,
-      module: 'API Interactions',
-      href: 'https://github.com/JKaulback/AI_Trivia_Webapp'
-    },
-  ];
 
   return (
     <section id="work" className="min-h-screen flex items-center justify-center p-8 transition-colors duration-300">
