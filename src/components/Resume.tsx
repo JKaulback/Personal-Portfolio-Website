@@ -59,13 +59,13 @@ export function Resume({ isDarkMode }: ResumeProps) {
           ? 'bg-slate-900 border-slate-800'
           : 'bg-white border-slate-200 shadow-lg'
           }`}>
-          <div className="flex justify-between items-start">
-            <div>
-              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border transition-colors duration-300 ${isDarkMode
-                ? 'bg-yellow-900/30 text-yellow-300 border-yellow-800'
-                : 'bg-yellow-100 text-yellow-700 border-yellow-300'
+          <div className="flex flex-row justify-between items-center gap-6">
+            <div className="flex flex-col">
+              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border transition-colors duration-300 w-fit ${isDarkMode
+                ? 'bg-orange-900/30 text-orange-300 border-orange-800'
+                : 'bg-orange-100 text-orange-700 border-orange-300'
                 }`}>
-                <div className="w-2 h-2 bg-yellow-500 rounded-full" />
+                <div className="w-2 h-2 bg-orange-500 rounded-full" />
                 Resume Module
               </div>
               <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
@@ -81,9 +81,9 @@ export function Resume({ isDarkMode }: ResumeProps) {
             <a
               href={resumePdf}
               download="Resume.pdf"
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isDarkMode
-                ? 'bg-yellow-600 hover:bg-yellow-500 text-white shadow-lg shadow-yellow-900/20'
-                : 'bg-yellow-500 hover:bg-yellow-400 text-white shadow-lg shadow-yellow-500/30'
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 shrink-0 cursor-pointer ${isDarkMode
+                ? 'bg-orange-600 hover:bg-orange-500 text-white shadow-lg shadow-orange-900/20'
+                : 'bg-orange-50 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/30'
                 }`}
             >
               <Download className="w-4 h-4" />
@@ -103,13 +103,13 @@ export function Resume({ isDarkMode }: ResumeProps) {
 
               <div className="space-y-6">
                 {experience.map((job, index) => (
-                  <div key={index} className={`p-4 rounded-xl border-2 ${isDarkMode ? 'bg-yellow-900/20 border-yellow-800/50' : 'bg-yellow-50 border-yellow-200'
+                  <div key={index} className={`p-4 rounded-xl border-2 ${isDarkMode ? 'bg-orange-900/20 border-orange-800/50' : 'bg-orange-50 border-orange-200'
                     }`}>
                     <h4 className={`transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
                       }`}>
                       {job.role}
                     </h4>
-                    <p className={`mb-3 transition-colors duration-300 ${isDarkMode ? 'text-yellow-300' : 'text-yellow-700'
+                    <p className={`mb-3 transition-colors duration-300 ${isDarkMode ? 'text-orange-300' : 'text-orange-700'
                       }`}>
                       {job.company}
                     </p>
@@ -131,7 +131,7 @@ export function Resume({ isDarkMode }: ResumeProps) {
                       }`}>
                       {job.highlights.map((highlight, i) => (
                         <li key={i} className="flex gap-2">
-                          <span className="text-yellow-500">•</span>
+                          <span className="text-orange-500">•</span>
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -152,13 +152,13 @@ export function Resume({ isDarkMode }: ResumeProps) {
               </h3>
 
               {education.map((edu, index) => (
-                <div key={index} className={`p-4 rounded-xl border-2 ${isDarkMode ? 'bg-yellow-900/20 border-yellow-800/50' : 'bg-yellow-50 border-yellow-200'
+                <div key={index} className={`p-4 rounded-xl border-2 ${isDarkMode ? 'bg-orange-900/20 border-orange-800/50' : 'bg-orange-50 border-orange-200'
                   }`}>
                   <h4 className={`text-sm mb-2 ${isDarkMode ? 'text-white' : 'text-slate-900'
                     }`}>
                     {edu.degree}
                   </h4>
-                  <p className={`text-sm mb-2 ${isDarkMode ? 'text-yellow-300' : 'text-yellow-700'
+                  <p className={`text-sm mb-2 ${isDarkMode ? 'text-orange-300' : 'text-orange-700'
                     }`}>
                     {edu.school}
                   </p>
@@ -181,8 +181,8 @@ export function Resume({ isDarkMode }: ResumeProps) {
               <div className="space-y-2">
                 {certifications.map((cert, index) => (
                   <div key={index} className={`p-3 rounded-lg border-2 text-sm ${isDarkMode
-                    ? 'bg-yellow-900/20 border-yellow-800/50 text-slate-300'
-                    : 'bg-yellow-50 border-yellow-200 text-slate-700'
+                    ? 'bg-orange-900/20 border-orange-800/50 text-slate-300'
+                    : 'bg-orange-50 border-orange-200 text-slate-700'
                     }`}>
                     {cert}
                   </div>

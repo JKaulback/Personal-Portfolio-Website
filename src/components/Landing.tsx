@@ -40,8 +40,8 @@ export function Landing({ isDarkMode }: LandingProps) {
       <div className="max-w-4xl w-full text-center space-y-8">
         <div className="flex justify-center mb-8">
           <div className={`relative p-2 rounded-3xl border-4 transition-colors duration-300 ${isDarkMode
-              ? 'bg-slate-900 border-slate-800 shadow-lg'
-              : 'bg-white border-purple-200 shadow-lg shadow-purple-200/50'
+            ? 'bg-slate-900 border-slate-800 shadow-lg'
+            : 'bg-white border-purple-200 shadow-lg shadow-purple-200/50'
             }`}>
             <div className="relative w-40 h-40 rounded-2xl overflow-hidden">
               <ImageWithFallback
@@ -68,19 +68,21 @@ export function Landing({ isDarkMode }: LandingProps) {
         <div className="flex flex-wrap gap-4 justify-center pt-4">
           <button
             onClick={() => scrollToElement('work')}
-            className={`px-8 py-4 rounded-lg transition-all hover:scale-105 border-2 cursor-pointer ${isDarkMode
-                ? 'bg-purple-600 text-white border-purple-500 hover:bg-purple-700'
-                : 'bg-purple-500 text-white border-purple-400 hover:bg-purple-600'
+            className={`px-8 py-4 rounded-lg transition-all hover:scale-105 border-2 ${isDarkMode
+              ? 'bg-purple-600 text-white border-purple-500 hover:bg-purple-700'
+              : 'bg-purple-500 text-white border-purple-400 hover:bg-purple-600'
               }`}
+            style={{ cursor: 'pointer' }}
           >
             View My Work
           </button>
           <button
             onClick={() => scrollToElement('contact')}
-            className={`px-8 py-4 border-2 rounded-lg transition-all hover:scale-105 cursor-pointer ${isDarkMode
-                ? 'bg-slate-900 border-slate-700 text-slate-300 hover:border-purple-600 hover:text-purple-400'
-                : 'bg-white border-purple-300 text-purple-900 hover:border-purple-500 hover:text-purple-700'
+            className={`px-8 py-4 border-2 rounded-lg transition-all hover:scale-105 ${isDarkMode
+              ? 'bg-slate-900 border-slate-700 text-slate-300 hover:border-purple-600 hover:text-purple-400'
+              : 'bg-white border-purple-300 text-purple-900 hover:border-purple-500 hover:text-purple-700'
               }`}
+            style={{ cursor: 'pointer' }}
           >
             Get In Touch
           </button>
@@ -92,9 +94,10 @@ export function Landing({ isDarkMode }: LandingProps) {
               key={label}
               href={href}
               className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all hover:scale-110 border-2 ${isDarkMode
-                  ? 'bg-slate-900 text-slate-400 hover:bg-purple-600 hover:text-white border-slate-800 hover:border-purple-500'
-                  : 'bg-white text-purple-700 hover:bg-purple-500 hover:text-white border-purple-200 hover:border-purple-400'
+                ? 'bg-slate-900 text-[#cbd5e1] hover:bg-purple-600 hover:text-white border-slate-800 hover:border-purple-500'
+                : 'bg-white text-purple-700 hover:bg-purple-500 hover:text-white border-purple-200 hover:border-purple-400'
                 }`}
+              style={{ color: isDarkMode ? '#cbd5e1' : undefined }}
               aria-label={label}
             >
               <Icon className="w-5 h-5" />
@@ -106,7 +109,7 @@ export function Landing({ isDarkMode }: LandingProps) {
       {showScrollIndicator && (
         <button
           onClick={() => scrollToElement('about')}
-          className={`absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce transition-opacity duration-300 ${isDarkMode ? 'text-purple-400' : 'text-purple-500'
+          className={`absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce transition-opacity duration-300 cursor-pointer ${isDarkMode ? 'text-purple-400' : 'text-purple-500'
             }`}
         >
           <ArrowDown className="w-6 h-6" />

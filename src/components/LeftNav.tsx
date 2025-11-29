@@ -9,12 +9,12 @@ interface LeftNavProps {
 export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavProps) {
   const navItems = [
     { id: 'home', label: 'Home', icon: Home, color: 'lavender' },
-    { id: 'about', label: 'About Me', icon: User, color: 'peach' },
-    { id: 'skills', label: 'Skills', icon: Sparkles, color: 'mint' },
-    { id: 'work', label: 'Work', icon: Briefcase, color: 'sky' },
-    { id: 'resume', label: 'Resume', icon: FileText, color: 'cream' },
+    { id: 'about', label: 'About Me', icon: User, color: 'cream' },
+    { id: 'skills', label: 'Skills', icon: Sparkles, color: 'electric' },
+    { id: 'work', label: 'Work', icon: Briefcase, color: 'mint' },
+    { id: 'resume', label: 'Resume', icon: FileText, color: 'peach' },
     { id: 'extra', label: 'Learning', icon: BookOpen, color: 'rose' },
-    { id: 'contact', label: 'Contact Me', icon: Mail, color: 'periwinkle' },
+    { id: 'contact', label: 'Contact Me', icon: Mail, color: 'royal' },
   ];
 
   const scrollToSection = (id: string) => {
@@ -25,7 +25,7 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
   };
 
   const getTabStyles = (color: string, isActive: boolean, isDarkMode: boolean) => {
-    const colors: { [key: string]: { light: string; lightActive: string; dark: string; darkActive: string; darkActiveBg: string } } = {
+    const colors: { [key: string]: { light: string; lightActive: string; dark: string; darkActive: string; darkActiveBg: string; lightBg?: string; lightActiveBg?: string; darkBg?: string; darkColor?: string; darkActiveColor?: string } } = {
       lavender: {
         light: 'bg-purple-200 text-purple-900 border-purple-400',
         lightActive: 'bg-purple-50 text-purple-700 border-purple-200',
@@ -75,6 +75,30 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
         darkActive: 'text-pink-200 border-pink-900',
         darkActiveBg: '#831843',
       },
+      electric: {
+        light: 'text-[#164e63] border-[#22d3ee]',
+        lightActive: 'text-[#0e7490] border-[#a5f3fc]',
+        lightBg: '#a5f3fc', // cyan-200
+        lightActiveBg: '#cffafe', // cyan-100
+        dark: 'text-cyan-100 border-cyan-500',
+        darkActive: 'text-cyan-200 border-cyan-900',
+        darkBg: 'rgba(22, 78, 99, 0.3)',
+        darkColor: '#cffafe', // cyan-100
+        darkActiveColor: '#a5f3fc', // cyan-200
+        darkActiveBg: '#164e63',
+      },
+      royal: {
+        light: 'text-[#312e81] border-[#818cf8]',
+        lightActive: 'text-[#4338ca] border-[#c7d2fe]',
+        lightBg: '#c7d2fe', // indigo-200
+        lightActiveBg: '#e0e7ff', // indigo-100
+        dark: 'text-indigo-100 border-indigo-500',
+        darkActive: 'text-indigo-200 border-indigo-900',
+        darkBg: 'rgba(49, 46, 129, 0.3)',
+        darkColor: '#e0e7ff', // indigo-100
+        darkActiveColor: '#c7d2fe', // indigo-200
+        darkActiveBg: '#312e81',
+      },
     };
 
     const colorSet = colors[color];
@@ -82,18 +106,23 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
       className: isDarkMode
         ? (isActive ? colorSet.darkActive : colorSet.dark)
         : (isActive ? colorSet.lightActive : colorSet.light),
-      backgroundColor: (isActive && isDarkMode) ? colorSet.darkActiveBg : undefined
+      backgroundColor: isDarkMode
+        ? (isActive ? colorSet.darkActiveBg : (colorSet.darkBg || undefined))
+        : (isActive ? (colorSet.lightActiveBg || undefined) : (colorSet.lightBg || undefined)),
+      color: isDarkMode
+        ? (isActive ? (colorSet.darkActiveColor || undefined) : (colorSet.darkColor || undefined))
+        : undefined
     };
   };
 
   return (
     <>
       {/* Mobile Navigation */}
-      <nav className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t-2 transition-colors duration-300 ${isDarkMode
+      <nav className={`lg:hidden fixed top-0 left-0 right-0 z-50 border-b-2 transition-colors duration-300 ${isDarkMode
         ? 'bg-slate-900 border-slate-800'
         : 'bg-slate-200 border-slate-400'
         }`}>
-        <div className="relative flex overflow-x-auto pb-2 px-2 pt-2 gap-1 scrollbar-hide">
+        <div className="relative flex overflow-x-auto px-2 pt-0 gap-1 scrollbar-hide">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -102,9 +131,15 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 rounded-t-lg border-2 border-b-0 transition-all min-w-[70px] ${styles.className
-                  } ${isActive ? 'translate-y-0' : 'translate-y-1'}`}
-                style={styles.backgroundColor ? { backgroundColor: styles.backgroundColor } : undefined}
+                className={`flex-shrink-0 flex flex-col items-center gap-1 px-3 py-2 border-2 border-t-0 transition-all min-w-[70px] ${styles.className
+                  } ${isActive
+                    ? 'rounded-b-none border-b-0 translate-y-0 z-10 -mb-[2px]'
+                    : 'rounded-b-lg -translate-y-1 mb-1'
+                  }`}
+                style={{
+                  ...(styles.backgroundColor ? { backgroundColor: styles.backgroundColor } : {}),
+                  ...(styles.color ? { color: styles.color } : {})
+                }}
               >
                 <Icon className="w-4 h-4" />
                 <span className="text-xs whitespace-nowrap">{item.label}</span>
@@ -155,7 +190,7 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative transition-all duration-300 flex items-center justify-center overflow-hidden ${styles.className
+                className={`relative transition-all duration-300 flex items-center justify-center overflow-hidden cursor-pointer ${styles.className
                   } ${isActive ? 'opacity-100' : 'opacity-60 hover:opacity-80'}`}
                 title={item.label}
                 style={{
@@ -168,6 +203,7 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
                   marginRight: isPushed ? '-110px' : '0',
                   padding: '8px 0',
                   backgroundColor: styles.backgroundColor,
+                  color: styles.color,
                 }}
               >
                 <div className="flex flex-col items-center justify-center h-full">

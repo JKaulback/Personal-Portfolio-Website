@@ -19,7 +19,7 @@ export function Skills({ isDarkMode }: SkillsProps) {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setPaddingLeft('20rem'); // 320px
+        setPaddingLeft('11rem'); // 320px
       } else {
         setPaddingLeft('2rem'); // 32px (p-8)
       }
@@ -47,7 +47,7 @@ export function Skills({ isDarkMode }: SkillsProps) {
     { skill: 'Bootstrap', category: 'Web Development', acquiredAt: 'Self-Directed Learning', activity: 'Responsive Design', evidence: 'GitHub Repository/AI-Trivia-Webapp' },
     { skill: 'Tailwind CSS', category: 'Web Development', acquiredAt: 'Self-Directed Learning', activity: 'Styling & Organization', evidence: 'GitHub Repository/Personal-Portfolio-Website' },
     { skill: 'Sass', category: 'Web Development', acquiredAt: 'NSCC Coursework', activity: 'Styling & Organization', evidence: 'Coursework' },
-    
+
     // Database
     { skill: 'PostgreSQL', category: 'Database', acquiredAt: 'NSCC Coursework', activity: 'Database Management', evidence: 'Coursework' },
     { skill: 'MongoDB', category: 'Database', acquiredAt: 'Self-Directed Learning', activity: 'NoSQL Implementation', evidence: 'MERN Stack App' },
@@ -59,11 +59,11 @@ export function Skills({ isDarkMode }: SkillsProps) {
     { skill: 'React Native', category: 'Mobile', acquiredAt: 'Self-Directed Learning', activity: 'Mobile App Development', evidence: 'Mobile Prototype' },
     { skill: 'Android Studio', category: 'Mobile', acquiredAt: 'NSCC Coursework', activity: 'Native Android Apps', evidence: 'Android Project' },
     { skill: 'Kotlin', category: 'Mobile', acquiredAt: 'NSCC Coursework', activity: 'Native Android Apps', evidence: 'Android Project' },
-    
+
     // DevOps
     { skill: 'Git & GitHub', category: 'DevOps', acquiredAt: 'NSCC Coursework', activity: 'Version Control', evidence: 'GitHub Commit History' },
-    { skill: 'Docker', category: 'DevOps', acquiredAt: 'Self-Directed Learning', activity: 'Containerization', evidence: 'Dockerized App' },
-    { skill: 'Postman', category: 'DevOps', acquiredAt: 'Self-Directed Learning', activity: 'API Testing', evidence: 'API Testing' },
+    { skill: 'Docker', category: 'DevOps', acquiredAt: 'Self-Directed Learning', activity: 'Containerization', evidence: 'GitHub Repository/INET2005_Assignment3_JK' },
+    { skill: 'Postman', category: 'DevOps', acquiredAt: 'Self-Directed Learning', activity: 'API Testing', evidence: 'GitHub Repository/INET2005_Assignment3_JK' },
 
     // Soft Skills
     { skill: 'Problem Solving', category: 'Soft Skills', acquiredAt: 'Various Projects', activity: 'Debugging & Logic', evidence: 'Project Success Rates' },
@@ -91,19 +91,24 @@ export function Skills({ isDarkMode }: SkillsProps) {
           ? 'bg-slate-900 border-slate-800'
           : 'bg-white border-slate-200 shadow-lg'
           }`}>
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border transition-colors duration-300 ${isDarkMode
-            ? 'bg-emerald-900/30 text-emerald-300 border-emerald-800'
-            : 'bg-emerald-100 text-emerald-700 border-emerald-300'
-            }`}>
-            <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border-2 transition-colors duration-300 ${isDarkMode
+            ? 'bg-cyan-900/30 text-[#a5f3fc] border-cyan-500'
+            : 'bg-cyan-100 text-cyan-700 border-cyan-300'
+            }`}
+            style={{
+              color: isDarkMode ? '#a5f3fc' : undefined,
+              borderColor: isDarkMode ? '#06b6d4' : undefined
+            }}
+          >
+            <div className="w-2 h-2 bg-cyan-500 rounded-full" />
             Skills Inventory
           </div>
           <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             Technical & Professional Skills
           </h2>
-          <p className={`transition-colors duration-300 ${isDarkMode ? 'text-[#94a3b8]' : 'text-slate-600'}`}
-            style={{ color: isDarkMode ? '#cbd5e1' : undefined }}
+          <p className={`transition-colors duration-300 ${isDarkMode ? 'text-[#e2e8f0]' : 'text-slate-600'}`}
+            style={{ color: isDarkMode ? '#e2e8f0' : undefined }}
           >
             A detailed inventory of my competencies, acquisition sources, and practical applications.
           </p>
@@ -215,7 +220,7 @@ export function Skills({ isDarkMode }: SkillsProps) {
                             </td>
                             {/* Last Cell: Right Border + Bottom Border (if last) */}
                             <td className={`p-4 border-r-2 ${borderColorClass} ${isLastItem ? 'border-b-2' : ''}`}>
-                              <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border whitespace-nowrap ${isDarkMode
+                              <span className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium border whitespace-nowrap ${isDarkMode
                                 ? 'bg-slate-800 border-slate-700 text-slate-300'
                                 : 'bg-slate-100 border-slate-200 text-slate-600'
                                 }`}>
@@ -235,12 +240,17 @@ export function Skills({ isDarkMode }: SkillsProps) {
 
         <div className={`mt-8 p-6 rounded-2xl border-2 text-center transition-colors duration-300 ${isDarkMode
           ? 'bg-slate-900 border-slate-800'
-          : 'bg-emerald-50 border-emerald-200 shadow-lg'
+          : 'bg-[#cffafe] border-cyan-200 shadow-lg'
           }`}>
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-4 border ${isDarkMode
-            ? 'bg-emerald-900/30 text-emerald-300 border-emerald-800'
-            : 'bg-white text-emerald-700 border-emerald-300'
-            }`}>
+          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-4 border-2 ${isDarkMode
+            ? 'bg-cyan-900/30 text-[#a5f3fc] border-cyan-500'
+            : 'bg-white text-cyan-700 border-cyan-300'
+            }`}
+            style={{
+              color: isDarkMode ? '#a5f3fc' : undefined,
+              borderColor: isDarkMode ? '#06b6d4' : undefined
+            }}
+          >
             💡 Learning Module
           </div>
           <p className={`text-lg transition-colors duration-300 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'

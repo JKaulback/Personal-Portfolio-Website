@@ -15,12 +15,12 @@ export default function App() {
   const getSectionBackground = (section: string, isDark: boolean) => {
     const backgrounds: { [key: string]: { light: string; dark: string } } = {
       home: { light: '#faf5ff', dark: '#3b0764' },
-      about: { light: '#fff7ed', dark: '#7c2d12' },
-      skills: { light: '#ecfdf5', dark: '#064e3b' },
-      work: { light: '#f0f9ff', dark: '#082f49' },
-      resume: { light: '#fefce8', dark: '#713f12' },
+      about: { light: '#fefce8', dark: '#713f12' }, // Yellow-50/900 to match Cream theme
+      skills: { light: '#cffafe', dark: '#164e63' },
+      work: { light: '#ecfdf5', dark: '#064e3b' },
+      resume: { light: '#fff7ed', dark: '#7c2d12' }, // Orange-50/900 to match Peach theme
       extra: { light: '#fdf2f8', dark: '#831843' },
-      contact: { light: '#eff6ff', dark: '#172554' },
+      contact: { light: '#e0e7ff', dark: '#312e81' },
     };
     const bg = backgrounds[section] || backgrounds.home;
     return isDark ? bg.dark : bg.light;
@@ -28,6 +28,12 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Check if we're at the bottom of the page
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        setActiveSection('contact');
+        return;
+      }
+
       const sections = ['home', 'about', 'skills', 'work', 'resume', 'extra', 'contact'];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
@@ -57,7 +63,7 @@ export default function App() {
       <LeftNav activeSection={activeSection} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
       <main
-        className="lg:ml-[12rem] min-w-0 transition-colors duration-300"
+        className="lg:ml-[12rem] min-w-0 transition-colors duration-300 pt-20 lg:pt-0"
         style={{ backgroundColor: bgColor }}
       >
         <Landing isDarkMode={isDarkMode} />
