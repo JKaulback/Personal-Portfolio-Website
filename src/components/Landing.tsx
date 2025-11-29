@@ -2,12 +2,12 @@ import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import profilePicture from '../assets/profile-picture.jpg';
 import { useEffect, useState } from 'react';
+import { useTheme } from '../context/ThemeContext';
+import { useNavigation } from '../context/NavigationContext';
 
-interface LandingProps {
-  isDarkMode: boolean;
-}
-
-export function Landing({ isDarkMode }: LandingProps) {
+export function Landing() {
+  const { isDarkMode } = useTheme();
+  const { scrollToSection } = useNavigation();
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
 
   useEffect(() => {
@@ -18,13 +18,6 @@ export function Landing({ isDarkMode }: LandingProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollToElement = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const socialLinks = [
     { icon: Github, label: 'GitHub', href: 'https://github.com/JKaulback' },
@@ -67,7 +60,7 @@ export function Landing({ isDarkMode }: LandingProps) {
 
         <div className="flex flex-wrap gap-4 justify-center pt-4">
           <button
-            onClick={() => scrollToElement('work')}
+            onClick={() => scrollToSection('work')}
             className={`px-8 py-4 rounded-lg transition-all hover:scale-105 border-2 ${isDarkMode
               ? 'bg-purple-600 text-white border-purple-500 hover:bg-purple-700'
               : 'bg-purple-500 text-white border-purple-400 hover:bg-purple-600'
@@ -77,7 +70,7 @@ export function Landing({ isDarkMode }: LandingProps) {
             View My Work
           </button>
           <button
-            onClick={() => scrollToElement('contact')}
+            onClick={() => scrollToSection('contact')}
             className={`px-8 py-4 border-2 rounded-lg transition-all hover:scale-105 ${isDarkMode
               ? 'bg-slate-900 border-slate-700 text-slate-300 hover:border-purple-600 hover:text-purple-400'
               : 'bg-white border-purple-300 text-purple-900 hover:border-purple-500 hover:text-purple-700'
@@ -108,7 +101,7 @@ export function Landing({ isDarkMode }: LandingProps) {
 
       {showScrollIndicator && (
         <button
-          onClick={() => scrollToElement('about')}
+          onClick={() => scrollToSection('about')}
           className={`absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce transition-opacity duration-300 cursor-pointer ${isDarkMode ? 'text-purple-400' : 'text-purple-500'
             }`}
         >

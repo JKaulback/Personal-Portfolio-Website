@@ -2,12 +2,14 @@ import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 import { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha'
 import { sendEmail } from '../services/email_service';
+import { useTheme } from '../context/ThemeContext';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { Textarea } from './ui/textarea';
+import { SectionBadge } from './ui/SectionBadge';
 
-interface ContactProps {
-  isDarkMode: boolean;
-}
-
-export function Contact({ isDarkMode }: ContactProps) {
+export function Contact() {
+  const { isDarkMode } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -50,13 +52,6 @@ export function Contact({ isDarkMode }: ContactProps) {
     setIsSubmitDisabled(false);
   };
 
-  const getInputClasses = () => `w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all ${isDarkMode
-    ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500'
-    : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400'
-    }`
-
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <section id="contact" className="min-h-screen flex items-center justify-center p-8 pb-24 lg:pb-8 transition-colors duration-300">
       <div className="max-w-5xl w-full">
@@ -65,30 +60,21 @@ export function Contact({ isDarkMode }: ContactProps) {
           ? 'bg-slate-900 border-slate-800'
           : 'bg-white border-slate-200 shadow-lg'
           }`}>
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border-2 transition-colors duration-300 ${isDarkMode
-            ? 'bg-indigo-900/30 text-[#c7d2fe] border-indigo-500'
-            : 'bg-indigo-100 text-indigo-700 border-indigo-300'
-            }`}
-            style={{
-              color: isDarkMode ? '#c7d2fe' : undefined,
-              borderColor: isDarkMode ? '#6366f1' : undefined
-            }}
-          >
-            <div className="w-2 h-2 bg-indigo-500 rounded-full" />
-            Contact Me Module
+          <div className="flex flex-col items-start">
+            <SectionBadge label="Contact Me Module" color="blue" className="mb-3" hideDot />
+            <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
+              }`}>
+              Get In Touch
+            </h2>
+            <p className={`transition-colors duration-300 ${isDarkMode ? 'text-[#e2e8f0]' : 'text-slate-600'
+              }`}
+              style={{ color: isDarkMode ? '#e2e8f0' : undefined }}
+            >
+              Get in touch with me here. I stay up-to-date with my emails and will get back to you promptly
+            </p>
           </div>
-          <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
-            }`}>
-            Get In Touch
-          </h2>
-          <p className={`transition-colors duration-300 ${isDarkMode ? 'text-[#e2e8f0]' : 'text-slate-600'
-            }`}
-            style={{ color: isDarkMode ? '#e2e8f0' : undefined }}
-          >
-            Get in touch with me here. I stay up-to-date with my emails and will get back to you promptly
-          </p>
-        </div>
 
+        </div>
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Contact Info Module */}
           <div className={`p-8 rounded-2xl border-2 space-y-6 transition-colors duration-300 ${isDarkMode
@@ -98,17 +84,7 @@ export function Contact({ isDarkMode }: ContactProps) {
             style={{ borderColor: isDarkMode ? '#334155' : undefined }}
           >
             <div>
-              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-4 border-2 ${isDarkMode
-                ? 'bg-indigo-900/30 text-[#c7d2fe] border-indigo-500'
-                : 'bg-indigo-100 text-indigo-700 border-indigo-300'
-                }`}
-                style={{
-                  color: isDarkMode ? '#c7d2fe' : undefined,
-                  borderColor: isDarkMode ? '#6366f1' : undefined
-                }}
-              >
-                Info Module
-              </div>
+              <SectionBadge label="Info Module" color="blue" className="mb-4" hideDot />
 
               <div className="space-y-4">
                 {contactInfo.map(({ icon: Icon, label, value }) => (
@@ -149,17 +125,7 @@ export function Contact({ isDarkMode }: ContactProps) {
             </div>
 
             <div>
-              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-4 border-2 ${isDarkMode
-                ? 'bg-indigo-900/30 text-[#c7d2fe] border-indigo-500'
-                : 'bg-indigo-100 text-indigo-700 border-indigo-300'
-                }`}
-                style={{
-                  color: isDarkMode ? '#c7d2fe' : undefined,
-                  borderColor: isDarkMode ? '#6366f1' : undefined
-                }}
-              >
-                Social Module
-              </div>
+              <SectionBadge label="Social Module" color="blue" className="mb-4" hideDot />
               <div className="flex gap-3">
                 {socialLinks.map(({ icon: Icon, label, href }) => (
                   <a
@@ -186,32 +152,22 @@ export function Contact({ isDarkMode }: ContactProps) {
             }`}
             style={{ borderColor: isDarkMode ? '#334155' : undefined }}
           >
-            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-2 border-2 ${isDarkMode
-              ? 'bg-indigo-900/30 text-[#c7d2fe] border-indigo-500'
-              : 'bg-indigo-100 text-indigo-700 border-indigo-300'
-              }`}
-              style={{
-                color: isDarkMode ? '#c7d2fe' : undefined,
-                borderColor: isDarkMode ? '#6366f1' : undefined
-              }}
-            >
-              Form Module
-            </div>
+            <SectionBadge label="Form Module" color="blue" className="mb-2" hideDot />
 
             <div>
               <label htmlFor="name" className={`block mb-2 transition-colors duration-300 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'
                 }`}>
                 Name
               </label>
-              <input
+              <Input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className={getInputClasses()}
                 placeholder="Your name"
+                className={isDarkMode ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500' : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400'}
               />
             </div>
 
@@ -220,15 +176,15 @@ export function Contact({ isDarkMode }: ContactProps) {
                 }`}>
                 Email
               </label>
-              <input
+              <Input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className={getInputClasses()}
                 placeholder="your.email@example.com"
+                className={isDarkMode ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500' : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400'}
               />
             </div>
 
@@ -237,19 +193,19 @@ export function Contact({ isDarkMode }: ContactProps) {
                 }`}>
                 Message
               </label>
-              <textarea
+              <Textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
                 rows={5}
-                className={`${getInputClasses()} resize-none`}
                 placeholder="Enter your message here..."
+                className={`resize-none ${isDarkMode ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500' : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400'}`}
               />
             </div>
 
-            <button
+            <Button
               type="submit"
               className={`w-full px-6 py-3 rounded-xl transition-colors border-2 ${isSubmitDisabled
                 ? 'bg-stone-600 border-indigo-500 text-white'
@@ -258,19 +214,17 @@ export function Contact({ isDarkMode }: ContactProps) {
                   : 'bg-indigo-500 text-white border-indigo-400 hover:bg-indigo-600 shadow-md'
                 }`}
               disabled={isSubmitDisabled}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
               style={{
                 borderColor: isDarkMode ? '#6366f1' : undefined,
                 backgroundColor: isSubmitDisabled
                   ? '#57534e'
-                  : (isHovered ? '#4f46e5' : '#6366f1'),
+                  : undefined, // Let tailwind handle hover states
                 color: '#ffffff',
                 cursor: 'pointer'
               }}
             >
               {isSubmitDisabled ? '↓ Are You Human?' : 'Send Message'}
-            </button>
+            </Button>
 
             <ReCAPTCHA
               key={isDarkMode ? "dark" : "light"}

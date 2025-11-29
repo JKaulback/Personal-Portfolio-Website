@@ -1,28 +1,21 @@
 import { Home, User, Sparkles, Briefcase, FileText, Mail, Moon, Sun, BookOpen } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { useNavigation } from '../context/NavigationContext';
+import { NAV_ITEMS } from '../config/theme';
 
-interface LeftNavProps {
-  activeSection: string;
-  isDarkMode: boolean;
-  setIsDarkMode: (value: boolean) => void;
-}
+export function LeftNav() {
+  const { isDarkMode, toggleTheme } = useTheme();
+  const { activeSection, scrollToSection } = useNavigation();
 
-export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavProps) {
   const navItems = [
-    { id: 'home', label: 'Home', icon: Home, color: 'lavender' },
-    { id: 'about', label: 'About Me', icon: User, color: 'cream' },
-    { id: 'skills', label: 'Skills', icon: Sparkles, color: 'electric' },
-    { id: 'work', label: 'Work', icon: Briefcase, color: 'mint' },
-    { id: 'resume', label: 'Resume', icon: FileText, color: 'peach' },
-    { id: 'extra', label: 'Learning', icon: BookOpen, color: 'rose' },
-    { id: 'contact', label: 'Contact Me', icon: Mail, color: 'royal' },
+    { icon: Home, ...NAV_ITEMS.find(i => i.id === 'home')! },
+    { icon: User, ...NAV_ITEMS.find(i => i.id === 'about')! },
+    { icon: Sparkles, ...NAV_ITEMS.find(i => i.id === 'skills')! },
+    { icon: Briefcase, ...NAV_ITEMS.find(i => i.id === 'work')! },
+    { icon: FileText, ...NAV_ITEMS.find(i => i.id === 'resume')! },
+    { icon: BookOpen, ...NAV_ITEMS.find(i => i.id === 'extra')! },
+    { icon: Mail, ...NAV_ITEMS.find(i => i.id === 'contact')! },
   ];
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const getTabStyles = (color: string, isActive: boolean, isDarkMode: boolean) => {
     const colors: { [key: string]: { light: string; lightActive: string; dark: string; darkActive: string; darkActiveBg: string; lightBg?: string; lightActiveBg?: string; darkBg?: string; darkColor?: string; darkActiveColor?: string } } = {
@@ -151,7 +144,7 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
 
       {/* Dark Mode Toggle - Mobile Floating Button */}
       <button
-        onClick={() => setIsDarkMode(!isDarkMode)}
+        onClick={toggleTheme}
         className={`lg:hidden fixed z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center ${isDarkMode
           ? 'bg-slate-800 text-slate-300 hover:bg-slate-700 border-2 border-slate-700'
           : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-2 border-slate-400'
@@ -168,7 +161,7 @@ export function LeftNav({ activeSection, isDarkMode, setIsDarkMode }: LeftNavPro
         }`}>
         {/* Dark Mode Toggle */}
         <button
-          onClick={() => setIsDarkMode(!isDarkMode)}
+          onClick={toggleTheme}
           className={`p-4 h-12 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border-2 ${isDarkMode
             ? 'bg-slate-800 text-slate-400 hover:bg-slate-700 border-slate-700'
             : 'bg-slate-300 text-slate-700 hover:bg-slate-400 border-slate-400'

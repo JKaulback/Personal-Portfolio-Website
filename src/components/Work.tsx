@@ -3,12 +3,11 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import chessGameImage from '../assets/chess_game_in_progress.jpg';
 import foodSafeImage from '../assets/food-safe-ns.png';
 import aiTriviaGameImage from '../assets/AI-trivia-game.png';
+import { useTheme } from '../context/ThemeContext';
+import { SectionBadge } from './ui/SectionBadge';
 
-interface WorkProps {
-  isDarkMode: boolean;
-}
-
-export function Work({ isDarkMode }: WorkProps) {
+export function Work() {
+  const { isDarkMode } = useTheme();
   const projects = [
     {
       title: 'Chess Analysis Program',
@@ -43,15 +42,7 @@ export function Work({ isDarkMode }: WorkProps) {
           ? 'bg-slate-900 border-slate-800'
           : 'bg-white border-slate-200 shadow-lg'
           }`}>
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border transition-colors duration-300 ${isDarkMode
-            ? 'bg-emerald-900/30 text-[#6ee7b7] border-emerald-800'
-            : 'bg-emerald-100 text-emerald-700 border-emerald-300'
-            }`}
-            style={{ color: isDarkMode ? '#6ee7b7' : undefined }}
-          >
-            <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-            Work Module
-          </div>
+          <SectionBadge label="Work Module" color="emerald" className="mb-3" />
           <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             Featured Projects

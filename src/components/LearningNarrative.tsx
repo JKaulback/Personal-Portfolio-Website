@@ -1,8 +1,8 @@
-interface LearningNarrativeProps {
-    isDarkMode: boolean;
-}
+import { useTheme } from '../context/ThemeContext';
+import { SectionBadge } from './ui/SectionBadge';
 
-export function LearningNarrative({ isDarkMode }: LearningNarrativeProps) {
+export function LearningNarrative() {
+    const { isDarkMode } = useTheme();
 
     return (
         <section id="extra" className="min-h-screen flex items-center justify-center p-8 pt-24 lg:pt-8 transition-colors duration-300">
@@ -11,15 +11,7 @@ export function LearningNarrative({ isDarkMode }: LearningNarrativeProps) {
                     ? 'bg-slate-900 border-slate-800'
                     : 'bg-white border-slate-200 shadow-xl'
                     }`}>
-                    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm mb-6 border-2 transition-colors duration-300 ${isDarkMode
-                        ? 'bg-pink-900/30 text-[#f9a8d4] border-pink-800'
-                        : 'bg-pink-100 text-pink-700 border-pink-300'
-                        }`}
-                        style={{ color: isDarkMode ? '#f9a8d4' : undefined }}
-                    >
-                        <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse" />
-                        Learning Narrative Module
-                    </div>
+                    <SectionBadge label="Learning Narrative Module" color="pink" className="mb-6" />
 
                     <h2 className={`text-3xl font-bold mb-4 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-800'
                         }`}>

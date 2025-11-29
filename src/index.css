@@ -77,6 +77,16 @@
     --color-teal-700: oklch(.511 .096 186.391);
     --color-teal-800: oklch(.437 .078 188.216);
     --color-teal-900: oklch(.386 .063 188.416);
+    --color-cyan-50: oklch(.985 .015 198);
+    --color-cyan-100: oklch(.965 .035 198);
+    --color-cyan-200: oklch(.92 .07 198);
+    --color-cyan-300: oklch(.86 .13 198);
+    --color-cyan-400: oklch(.77 .16 198);
+    --color-cyan-500: oklch(.70 .18 198);
+    --color-cyan-600: oklch(.60 .18 198);
+    --color-cyan-700: oklch(.50 .14 198);
+    --color-cyan-800: oklch(.43 .10 198);
+    --color-cyan-900: oklch(.38 .08 198);
     --color-sky-50: oklch(.977 .013 236.62);
     --color-sky-100: oklch(.951 .026 236.824);
     --color-sky-200: oklch(.901 .058 230.902);

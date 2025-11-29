@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle2, BookOpen, Briefcase, Award } from 'lucide-react';
-
-interface SkillsProps {
-  isDarkMode: boolean;
-}
+import { Code2, Database, Layout, Server, Settings, Terminal, Wrench, Cpu } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { SectionBadge } from './ui/SectionBadge'; // Trigger HMR
 
 interface SkillItem {
   skill: string;
@@ -13,7 +11,8 @@ interface SkillItem {
   evidence: string;
 }
 
-export function Skills({ isDarkMode }: SkillsProps) {
+export function Skills() {
+  const { isDarkMode } = useTheme();
   const [paddingLeft, setPaddingLeft] = useState('2rem');
 
   useEffect(() => {
@@ -91,18 +90,7 @@ export function Skills({ isDarkMode }: SkillsProps) {
           ? 'bg-slate-900 border-slate-800'
           : 'bg-white border-slate-200 shadow-lg'
           }`}>
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border-2 transition-colors duration-300 ${isDarkMode
-            ? 'bg-cyan-900/30 text-[#a5f3fc] border-cyan-500'
-            : 'bg-cyan-100 text-cyan-700 border-cyan-300'
-            }`}
-            style={{
-              color: isDarkMode ? '#a5f3fc' : undefined,
-              borderColor: isDarkMode ? '#06b6d4' : undefined
-            }}
-          >
-            <div className="w-2 h-2 bg-cyan-500 rounded-full" />
-            Skills Inventory
-          </div>
+          <SectionBadge label="Skills Inventory" color="cyan" className="mb-3" />
           <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
             }`}>
             Technical & Professional Skills
@@ -240,19 +228,9 @@ export function Skills({ isDarkMode }: SkillsProps) {
 
         <div className={`mt-8 p-6 rounded-2xl border-2 text-center transition-colors duration-300 ${isDarkMode
           ? 'bg-slate-900 border-slate-800'
-          : 'bg-[#cffafe] border-cyan-200 shadow-lg'
+          : 'bg-white border-slate-200 shadow-lg'
           }`}>
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-4 border-2 ${isDarkMode
-            ? 'bg-cyan-900/30 text-[#a5f3fc] border-cyan-500'
-            : 'bg-white text-cyan-700 border-cyan-300'
-            }`}
-            style={{
-              color: isDarkMode ? '#a5f3fc' : undefined,
-              borderColor: isDarkMode ? '#06b6d4' : undefined
-            }}
-          >
-            💡 Learning Module
-          </div>
+          <SectionBadge label="Learning Module" color="cyan" className="mb-4" icon={<span>💡</span>} />
           <p className={`text-lg transition-colors duration-300 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'
             }`}>
             Always learning and exploring new technologies to stay ahead in the ever-evolving world of web development

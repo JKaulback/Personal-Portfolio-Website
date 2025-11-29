@@ -1,8 +1,8 @@
-interface AboutProps {
-  isDarkMode: boolean;
-}
+import { useTheme } from '../context/ThemeContext';
+import { SectionBadge } from './ui/SectionBadge';
 
-export function About({ isDarkMode }: AboutProps) {
+export function About() {
+  const { isDarkMode } = useTheme();
   const contentParagraphs = [
     "I'm a passionate developer with a love for creating well-structured, functional solutions. I have been learning how to use different tools, technologies, and techniques to be successful in any sector of the IT industry.",
     "When I'm not coding, you can find me invested in a book, spending time in nature, or going on mini-adventures with my wife."
@@ -27,15 +27,7 @@ export function About({ isDarkMode }: AboutProps) {
           ? 'bg-slate-900 border-slate-800'
           : 'bg-white border-slate-200 shadow-xl'
           }`}>
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm mb-6 border-2 transition-colors duration-300 ${isDarkMode
-            ? 'bg-yellow-900/30 text-[#fde047] border-yellow-800'
-            : 'bg-yellow-100 text-yellow-700 border-yellow-300'
-            }`}
-            style={{ color: isDarkMode ? '#fde047' : undefined }}
-          >
-            <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
-            About Me Module
-          </div>
+          <SectionBadge label="About Me Module" color="yellow" className="mb-6" />
 
           <h2 className={`mb-6 transition-colors duration-300 ${isDarkMode ? 'text-slate-100' : 'text-slate-600'
             }`}

@@ -1,11 +1,10 @@
 import { Calendar, MapPin, Award, GraduationCap, Download } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 import resumePdf from '../assets/Resume.pdf';
+import { SectionBadge } from './ui/SectionBadge';
 
-interface ResumeProps {
-  isDarkMode: boolean;
-}
-
-export function Resume({ isDarkMode }: ResumeProps) {
+export function Resume() {
+  const { isDarkMode } = useTheme();
   const experience = [
     {
       role: 'Junior IT Analyst',
@@ -60,14 +59,8 @@ export function Resume({ isDarkMode }: ResumeProps) {
           : 'bg-white border-slate-200 shadow-lg'
           }`}>
           <div className="flex flex-row justify-between items-center gap-6">
-            <div className="flex flex-col">
-              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs mb-3 border transition-colors duration-300 w-fit ${isDarkMode
-                ? 'bg-orange-900/30 text-orange-300 border-orange-800'
-                : 'bg-orange-100 text-orange-700 border-orange-300'
-                }`}>
-                <div className="w-2 h-2 bg-orange-500 rounded-full" />
-                Resume Module
-              </div>
+            <div className="flex flex-col items-start">
+              <SectionBadge label="Resume Module" color="orange" className="mb-3 w-fit" hideDot />
               <h2 className={`mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-slate-900'
                 }`}>
                 Professional Experience
@@ -83,7 +76,7 @@ export function Resume({ isDarkMode }: ResumeProps) {
               download="Resume.pdf"
               className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 shrink-0 cursor-pointer ${isDarkMode
                 ? 'bg-orange-600 hover:bg-orange-500 text-white shadow-lg shadow-orange-900/20'
-                : 'bg-orange-50 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/30'
+                : 'bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/30'
                 }`}
             >
               <Download className="w-4 h-4" />
