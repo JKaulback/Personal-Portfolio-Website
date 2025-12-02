@@ -9,6 +9,7 @@ import { LearningNarrative } from './components/LearningNarrative';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { NavigationProvider } from './context/NavigationContext';
 import { Toaster } from 'sonner';
+import { Analytics } from '@vercel/analytics/react';
 
 function AppContent() {
   const { sectionBackground } = useTheme();
@@ -31,6 +32,7 @@ function AppContent() {
         <Resume />
         <LearningNarrative />
         <Contact />
+        <Analytics />
       </main>
     </div>
   );
