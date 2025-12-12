@@ -5,7 +5,6 @@ import { Skills } from './components/Skills';
 import { Work } from './components/Work';
 import { Resume } from './components/Resume';
 import { Contact } from './components/Contact';
-import { LearningNarrative } from './components/LearningNarrative';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { NavigationProvider } from './context/NavigationContext';
 import { Toaster } from 'sonner';
@@ -30,7 +29,6 @@ function AppContent() {
         <Skills />
         <Work />
         <Resume />
-        <LearningNarrative />
         <Contact />
         <Analytics />
       </main>

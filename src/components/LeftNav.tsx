@@ -13,7 +13,6 @@ export function LeftNav() {
     { icon: Sparkles, ...NAV_ITEMS.find(i => i.id === 'skills')! },
     { icon: Briefcase, ...NAV_ITEMS.find(i => i.id === 'work')! },
     { icon: FileText, ...NAV_ITEMS.find(i => i.id === 'resume')! },
-    { icon: BookOpen, ...NAV_ITEMS.find(i => i.id === 'extra')! },
     { icon: Mail, ...NAV_ITEMS.find(i => i.id === 'contact')! },
   ];
 

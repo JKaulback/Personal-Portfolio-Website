@@ -4,7 +4,7 @@ import { aboutContent } from '../config/data';
 
 export function About() {
   const { isDarkMode } = useTheme();
-  const { paragraphs, shortTermGoals, longTermGoals } = aboutContent;
+  const { paragraphs } = aboutContent;
 
   return (
     <section id="about" className="min-h-screen flex items-center justify-center p-8 pt-24 lg:pt-8 transition-colors duration-300">

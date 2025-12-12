@@ -1,7 +1,7 @@
 import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
 import chessGameImage from '../assets/chess_game_in_progress.jpg';
 import foodSafeImage from '../assets/food-safe-ns.png';
-import aiTriviaGameImage from '../assets/AI-trivia-game.png';
+import casandrasClientKeeperImage from '../assets/casandras-client-keeper.png';
 
 export const contactInfo = [
     { icon: Mail, label: 'Email', value: 'jtkaulback@gmail.com' },
@@ -18,16 +18,6 @@ export const aboutContent = {
         "I'm a passionate developer with a love for creating well-structured, functional solutions. I have been learning how to use different tools, technologies, and techniques to be successful in any sector of the IT industry.",
         "When I'm not coding, you can find me invested in a book, spending time in nature, or going on mini-adventures with my wife."
     ],
-    shortTermGoals: [
-        "Complete my current course and gain a solid foundation in software development",
-        "Acquire full-time employment as a software developer",
-        "Become a trusted team member and contribute to the success of the company"
-    ],
-    longTermGoals: [
-        "Become a team lead and mentor junior developers",
-        "Develop expertise in a specific domain of software development",
-        "Expand my professional network and opportunities"
-    ]
 };
 
 export const skillsInventory = [
@@ -38,8 +28,8 @@ export const skillsInventory = [
     { skill: 'C++', category: 'Programming Languages', acquiredAt: 'NSCC Coursework', activity: 'Data Processing & Scripting', evidence: 'GitHub Repository/PROG2100_chess_analysis_program' },
 
     // Web Development
-    { skill: 'Node.js', category: 'Web Development', acquiredAt: 'NSCC Coursework', activity: 'Server-side Scripting', evidence: 'MERN Stack App' },
-    { skill: 'React', category: 'Web Development', acquiredAt: 'NSCC Coursework', activity: 'Frontend Development', evidence: 'MERN Stack App' },
+    { skill: 'Node.js', category: 'Web Development', acquiredAt: 'NSCC Coursework', activity: 'Server-side Scripting', evidence: 'GitHub Repository/casandras-client-keeper' },
+    { skill: 'React', category: 'Web Development', acquiredAt: 'NSCC Coursework', activity: 'Frontend Development', evidence: 'GitHub Repository/casandras-client-keeper' },
     { skill: 'REST APIs', category: 'Web Development', acquiredAt: 'NSCC Coursework', activity: 'API Integration', evidence: 'GitHub Repository/food-safe-nb' },
     { skill: 'HTML/CSS', category: 'Web Development', acquiredAt: 'NSCC Coursework', activity: 'Structure & Styling', evidence: 'GitHub Repository/food-safe-nb' },
     { skill: 'Bootstrap', category: 'Web Development', acquiredAt: 'Self-Directed Learning', activity: 'Responsive Design', evidence: 'GitHub Repository/AI-Trivia-Webapp' },
@@ -87,12 +77,12 @@ export const projects = [
         href: 'https://github.com/JKaulback/food-safe-ns'
     },
     {
-        title: 'AI Trivia Game',
-        description: 'An interactive web-based trivia game that uses the power of OpenAI\'s GPT to generate unlimited trivia questions.',
-        tags: ['AI', 'API Integration', 'EJS', 'Node.js'],
-        image: aiTriviaGameImage,
-        module: 'API Interactions',
-        href: 'https://github.com/JKaulback/AI_Trivia_Webapp'
+        title: 'Casandra\'s Client Keeper',
+        description: 'A full-stack web application that helps small businesses manage their clients and appointments',
+        tags: ['React', 'Node.js', 'MongoDB', 'Express Server', 'API Integration'],
+        image: casandrasClientKeeperImage,
+        module: 'Full Stack',
+        href: 'https://github.com/JKaulback/casandras-client-keeper'
     },
 ];
 
@@ -140,19 +130,4 @@ export const certifications = [
     'First Place Winner of 2025 RBC HubHacks',
     'Occupational Health & Safety Act',
     'Workplace Hazardous Materials Information Systems'
-];
-
-export const learningNarrative = [
-    {
-        question: 'Why did you choose to take IT Programming at NSCC?',
-        answer: 'My interest in software development began with a high school Python and robotics course. I previously worked in the IT industry with J.D. Irving, which was my most fulfilling role to date. While programming concepts come naturally to me, I realized my growth was limited by "not knowing what I didn\'t know." I enrolled in the IT Programming program at NSCC to bridge those gaps, master modern industry practices, and build a strong professional network.'
-    },
-    {
-        question: 'What knowledge, skills and abilities do you bring with you to NSCC?',
-        answer: 'I bring prior industry experience and a strong foundation in Java and Object-Oriented Principles from UNB, along with skills in technical documentation and public speaking. My background in manual labor has instilled a strong work ethic, prioritizing safety and effective time management. I am adaptable, able to learn new concepts quickly, and skilled at applying theoretical knowledge to practical solutions.'
-    },
-    {
-        question: 'Where do you see yourself in five years?',
-        answer: 'In five years, I envision myself as a key contributor to an organization\'s IT infrastructure. I aim to be deeply integrated into operations, actively driving improvements, and progressing towards specialization in a specific sector of the industry.'
-    }
 ];
