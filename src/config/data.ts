@@ -24,9 +24,9 @@ export const aboutContent = {
         "Become a trusted team member and contribute to the success of the company"
     ],
     longTermGoals: [
-        "Become a team lead and mentor junior developers",
+        "Stay loyal to the company and grow into a leadership position",
         "Develop expertise in a specific domain of software development",
-        "Expand my professional network and opportunities"
+        "Become the type of developer that others come to for advice"
     ]
 };
 
