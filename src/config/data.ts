@@ -1,7 +1,7 @@
 import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
 import chessGameImage from '../assets/chess_game_in_progress.jpg';
 import foodSafeImage from '../assets/food-safe-ns.png';
-import aiTriviaGameImage from '../assets/AI-trivia-game.png';
+import casandrasClientKeeperImage from '../assets/casandras-client-keeper.png';
 
 export const contactInfo = [
     { icon: Mail, label: 'Email', value: 'jtkaulback@gmail.com' },
@@ -87,12 +87,13 @@ export const projects = [
         href: 'https://github.com/JKaulback/food-safe-ns'
     },
     {
-        title: 'AI Trivia Game',
-        description: 'An interactive web-based trivia game that uses the power of OpenAI\'s GPT to generate unlimited trivia questions.',
-        tags: ['AI', 'API Integration', 'EJS', 'Node.js'],
-        image: aiTriviaGameImage,
-        module: 'API Interactions',
-        href: 'https://github.com/JKaulback/AI_Trivia_Webapp'
+        title: 'Casandra\'s Client Keeper',
+        description: 'A full-stack web application that helps small businesses manage their clients and appointments',
+        tags: ['React', 'Node.js', 'Firebase', 'Express Server', 'API Integration'],
+        image: casandrasClientKeeperImage,
+        module: 'Full Stack',
+        href: 'https://github.com/JKaulback/casandras-client-keeper',
+        liveDemo: 'https://casandras-client-keeper.vercel.app/'
     },
 ];
 

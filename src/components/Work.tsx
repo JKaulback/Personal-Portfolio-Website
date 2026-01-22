@@ -93,6 +93,15 @@ export function Work() {
                     <Github className="w-4 h-4" />
                     Code
                   </a>
+                  {project.liveDemo && (
+                    <a
+                      href={project.liveDemo}
+                      className={`flex items-center gap-2 hover:text-emerald-600 transition-colors text-sm cursor-pointer ${isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                        }`}>
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
